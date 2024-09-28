@@ -1,14 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { claimStageAtom } from '../lib/state';
+import { claimDataAtom, claimStageAtom } from '../lib/state';
 import { useAtom } from 'jotai';
 import InfoHelper from '../components/Buttons/InfoHelper';
 import { Icon } from '@iconify/react';
 import { carMakes, insuranceCompanies } from '../lib/consts';
+import Link from 'next/link';
+
+import axios from 'axios';
 
 function Stage1() {
 	const [stage, setStage] = useAtom(claimStageAtom);
+	const [claimData, setClaimData] = useAtom(claimDataAtom);
 
 	const [otherParty, setOtherParty] = useState(false);
 	const [otherPartyDesc, setOtherPartyDesc] = useState('');
@@ -34,14 +38,24 @@ function Stage1() {
 		}
 	}, [otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany]);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = useCallback((e: React.FormEvent) => {
 		e.preventDefault();
 
-		console.log({ otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany, otherComments });
+		// Save the data
+		setClaimData({
+			...claimData,
+			otherParty: otherParty,
+			otherPartyDescription: otherPartyDesc,
+			injured: injured,
+			injuredDescription: injuryDesc,
+			policeReport: policeReport,
+			insuranceCompany: insuranceCompany,
+			otherComments: otherComments,
+		});
 
 		// Continue to the next stage
 		setStage(2);
-	}
+	}, [otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany, otherComments]);
 
 	return (<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
 		<div className='flex justify-between'>
@@ -123,11 +137,12 @@ function Stage1() {
 
 function Stage2() {
 	const [stage, setStage] = useAtom(claimStageAtom);
+	const [claimData, setClaimData] = useAtom(claimDataAtom);
 
 	const [carMake, setCarMake] = useState('');
 	const [carModel, setCarModel] = useState('');
-	const [carYear, setCarYear] = useState('');
-	const [carMilage, setCarMilage] = useState(''); // Miles
+	const [carYear, setCarYear] = useState(0);
+	const [carMilage, setCarMilage] = useState(0); // Miles
 	const [canContinue, setCanContinue] = useState(false);
 
 	useEffect(() => {
@@ -138,13 +153,21 @@ function Stage2() {
 		}
 	}, [carMake, carModel, carYear, carMilage]);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = useCallback((e: React.FormEvent) => {
 		e.preventDefault();
 
-		console.log({ carMake, carModel, carYear, carMilage });
+		// Save the data
+		setClaimData({
+			...claimData,
+			carMake,
+			carModel,
+			carYear,
+			carMileage: carMilage,
+		});
 
+		// Continue to the next stage
 		setStage(3);
-	};
+	}, [carMake, carModel, carYear, carMilage]);
 
 	return (
 		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
@@ -202,7 +225,7 @@ function Stage2() {
 						type="number"
 						className="input input-bordered"
 						placeholder="Year"
-						onChange={(e) => setCarYear(e.target.value)}
+						onChange={(e) => setCarYear(parseInt(e.target.value))}
 						required
 					/>
 				</div>
@@ -218,7 +241,7 @@ function Stage2() {
 						type="number"
 						className="input input-bordered"
 						placeholder="Mileage"
-						onChange={(e) => setCarMilage(e.target.value)}
+						onChange={(e) => setCarMilage(parseInt(e.target.value))}
 						required
 					/>
 				</div>
@@ -231,6 +254,7 @@ function Stage2() {
 
 function Stage3() {
 	const [stage, setStage] = useAtom(claimStageAtom);
+	const [claimData, setClaimData] = useAtom(claimDataAtom);
 	interface FileInput {
 		file: File | null;
 		key: string;
@@ -258,13 +282,17 @@ function Stage3() {
 		setFileInputs(fileInputs.map((input) => input.key === key ? { ...input, file } : input));
 	}, [fileInputs]);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = useCallback((e: React.FormEvent) => {
 		e.preventDefault();
 
-		console.log(fileInputs);
+		// Save the data
+		setClaimData({
+			...claimData,
+			files: fileInputs.map((input) => input.file).filter((file) => file) as File[],
+		});
 
 		setStage(4);
-	}
+	}, [fileInputs]);
 
 	return (
 		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
@@ -304,6 +332,17 @@ function Stage4() {
 	// 0 = Not started, 1 = Processing, 2 = Done
 	const [processingState, setProcessingState] = useState(0);
 
+	// On mount, start processing
+	useEffect(() => {
+		if (processingState !== 0) return;
+		setProcessingState(1);
+
+		// Simulate processing time
+		setTimeout(() => {
+			setProcessingState(2);
+		}, 3000);
+	}, []);
+
 	return (
 		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
 			<div className='flex justify-between w-full'>
@@ -314,7 +353,12 @@ function Stage4() {
 			<h2>Thank you for submitting your claim. We are now processing your information and generating a report.</h2>
 
 			{processingState <= 1 && <span className="loading loading-dots loading-md"></span>}
-			{processingState === 2 && <p>Claim submitted!</p>}
+			{processingState === 2 && <>
+
+				{{/* <p>Claim submitted!</p>
+				<Link href={`/my-claims/${claimRequest.id}`}> */}}
+			</>
+			}
 		</div>
 	)
 }

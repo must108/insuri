@@ -1,3 +1,5 @@
+'use client';
+
 import { claimStageAtom } from "@/app/lib/state";
 import { useAtom } from "jotai";
 import Link from "next/link";
