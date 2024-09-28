@@ -37,7 +37,7 @@ export default function Page() {
     }
 
     return (
-        <div>
+        <div className="p-20">
             <form onSubmit={handleSubmit}>
                 <UploadImage func={handleFileChange} file={file} />
 
