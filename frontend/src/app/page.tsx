@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FileClaimButton from "./components/Buttons/FileClaimButton";
+import LearnMoreButton from "./components/Buttons/LearnMoreButton";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
         
         <div className="flex w-fit items-center justify-center gap-4 btn-primary">
           <FileClaimButton />
-          <button className="btn btn-wide btn-outline btn-primary">Learn more</button>
+          <LearnMoreButton />
         </div>
 
         <Image src="/logo.svg" alt="Logo" width={120} height={120} />
