@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
+import { Halant } from 'next/font/google';
 import localFont from "next/font/local";
 import "./globals.css";
 
 import Navbar from "./components/Navbar/Navbar";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const halantFont = Halant({
+  weight: "400",
+  subsets: ["latin"],
+  variable: '--font-halant',
 });
 
 export const metadata: Metadata = {
@@ -28,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
+        className={`flex flex-col ${halantFont.className} antialiased min-h-screen`}
       >
         <Navbar />
         {children}
