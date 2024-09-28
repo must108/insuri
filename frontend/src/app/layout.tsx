@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import Navbar from "./components/Navbar/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
 
 
 const halantFont = Halant({
@@ -23,13 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`flex flex-col ${halantFont.className} antialiased min-h-screen`}
-      >
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`flex flex-col ${halantFont.className} antialiased min-h-screen`}
+        >
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

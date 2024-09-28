@@ -1,3 +1,4 @@
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,7 +22,18 @@ export default function Navbar() {
 					<LinkButton link="/myclaims" label="My Claims" />
 				</div>
 
-				<button className="btn">Login</button>
+				<div className="flex flex-col justify-center">
+					<SignedOut>
+						<SignInButton />
+					</SignedOut>
+					<SignedIn>
+						<div className="block">
+							<UserButton />
+						</div>
+					</SignedIn>
+
+				</div>
+
 			</div>
 		</div>
 	</>
