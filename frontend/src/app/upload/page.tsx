@@ -6,6 +6,7 @@ import { useState } from 'react';
 export default function Page() {
     const [file, setFile] = useState(null);
     const [retData, setRetData] = useState(null);
+    const [retProba, setRetProba] = useState(null);
 
     const handleFileChange = (e: any) => {
         setFile(e.target.files[0]);
@@ -31,6 +32,7 @@ export default function Page() {
         if (res.ok) {
             const data = await res.json();
             setRetData(data.predicted_damage);
+            setRetProba(data.pred_proba);
         }
     }
 
@@ -50,6 +52,7 @@ export default function Page() {
             </form>
             <div className="text-black">
                 {retData ? retData : null}
+                {retProba ? retProba : null}
             </div>
         </div>
     );
