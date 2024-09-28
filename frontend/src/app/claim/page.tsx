@@ -7,14 +7,16 @@ import { useAtom } from 'jotai';
 function Stage1() {
 	const [stage, setStage] = useAtom(claimStageAtom);
 
-	return <div className='flex flex-col gap-8 p-4'>
+	return <div className='flex flex-col gap-8 p-4 mb-[40%]'>
 		<p className='text-2xl'><strong>Step 1</strong></p>
 
 		<h2>It looks like you were involved in an auto incident. Let’s guide you through the necessary steps to handle the situation.</h2>
 
 
 		<h2>
-			First, safety is the priority. Have you contacted the proper authorities, like the police or medical services?
+			<i>
+				First, safety is the priority. Have you contacted the proper authorities, like the police or medical services?
+			</i>
 		</h2>
 
 		<div className='flex flex-row gap-2'>
@@ -29,7 +31,7 @@ export default function ClaimPage() {
 
 	return <>
 		<div className='w-full px-4 py-10 rounded-md flex-1 flex justify-center'>
-			<div className='max-w-[25rem]'>
+			<div className='max-w-[25rem] flex flex-col justify-center'>
 				<Stage1 />
 			</div>
 		</div>
