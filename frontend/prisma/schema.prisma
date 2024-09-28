@@ -10,7 +10,7 @@ datasource db {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
-model users {
+model User {
   id                BigInt   @id @default(autoincrement())
   fullname          String?
   created_at        DateTime @default(now()) @db.Timestamptz(6)
@@ -22,11 +22,15 @@ model users {
   insurance_company String?
   premium_cost      String?
   deductible        BigInt?
+
+  claims Claim[] @relation("userClaims")
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
-model claims {
+model Claim {
   id          BigInt  @id @default(autoincrement())
+  userId      String
+  user        User    @relation("userClaims", fields: [id], references: [id])
   car_make    String?
   car_model   String?
   car_year    String?
