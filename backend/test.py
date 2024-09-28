@@ -1,34 +1,34 @@
+from flask import Flask, request, jsonify
 from langchain_openai import OpenAI
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
+app = Flask(__name__)
+
 llm = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY"),
+    model="gpt-4o"
 )
 
-prompt = f"""
-Based on this users info and the picture of the cars damages, estimate and return repair_cost, claim_amount, deductible_amount, monthly_premium_increase in a JSON format, do not return anything else in your response:
-
-Personal Info
-Address: 11200 SW 8th St, Miami, FL 33199 
-Age: 32
-Gender: Male
-
-Vehicle Information
-Make: Toyota
-Model: Camry
-Year: 2018
-Millage: 100000
-
-Insurance
-Insurance Company: State Farm
-Deductible Amount: $500
-Premium Details: Monthly $100
-
-Reminder: do not return anything else in your response outside of the JSON
+initial_prompt = """
+You are an expert in the auto insurance industry. You answering questions for a user who wnats to know more about auto insurance. Kindly explain to them the answers to their questions. The users question goes as follows: 
 """
 
-res = llm.invoke(prompt)
-print(res)
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_input = request.json.get('user_input')
+    
+    # Combine the initial prompt with the user input
+    prompt = f"{initial_prompt}\n\nUser input: {user_input}"
+
+    # Get the response from the model
+    res = llm.invoke(prompt)
+    
+    # Return the response as JSON
+    return jsonify(res.content)
+
+if __name__ == '__main__':
+    app.run(debug=True)
