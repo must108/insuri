@@ -1,35 +1,47 @@
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-llm = OpenAI(
+llm = ChatOpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
-    model="gpt-4"
+    model="gpt-4o"
 )
 
 prompt = f"""
-Based on this users info and the picture of the cars damages, estimate and return repair_cost, claim_amount, deductible_amount, monthly_premium_increase in a JSON format, do not return anything else in your response:
+You are an expert insurance agent, tasked with helping customers with their insurance claims.
 
-Personal Info
-Address: 11200 SW 8th St, Miami, FL 33199 
-Age: 32
-Gender: Male
+Here is some information about the customer:
+Age: 19
+Gender: male
+Address: 5262 los palma vista dr, orlando fl, 32837
 
-Vehicle Information
+Here is some information about their vehicle:
 Make: Toyota
 Model: Camry
 Year: 2018
-Millage: 100000
+Mileage: 70000
 
-Insurance
-Insurance Company: State Farm
+Here is some information about their insurance:
+Insurance Company: Statefarm
 Deductible Amount: $500
-Premium Details: Monthly $100
+Premium Details: $300
 
-Reminder: do not return anything else in your response outside of the JSON
+This customer has suffered a car accident, and they want to know their repair cost,
+their claim amount, their deductible amount, and their monthly premium increase. 
+These are some of the damage incurred: Dent, scratch, rear-end collison
+
+Return the appropriate values given the data, strictly in JSON format, like this:
+    repair_cost: x,
+    claim_amount: x,
+    deductible_amount: x,
+    monthly_premium_increase: x,
+
+base these prices on the orlando, fl area. do not return anything but json in text form, without a code box
+be sure to be consistent with your responses. do not change them on requery
+remember to account for dealer/mechanic fees as well. consider all costs, including insurance company costs.
 """
 
 res = llm.invoke(prompt)
-print(res)
+print(res.content)
