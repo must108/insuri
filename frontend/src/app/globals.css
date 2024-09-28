@@ -3,10 +3,30 @@
 @tailwind utilities;
 
 :root {
-  --background: #F7F1E3;
+  /* Primary Colors */
+  --background: #f7f1e3;
   --foreground: #171717;
-}
 
+  /* Green (Success/Positive) */
+  --green-light: #a9dfbf;
+  --green-medium: #58d68d;
+  --green-dark: #28a745;
+
+  /* Red (Error/Warning) */
+  --red-light: #f5b7b1;
+  --red-medium: #e74c3c;
+  --red-dark: #c0392b;
+
+  /* Accent Colors */
+  --accent-light: #fdfbf7;
+  --accent-medium: #e6dfd4;
+  --accent-dark: #d9cec3;
+
+  /* Neutral Variants */
+  --gray-light: #d0d0d0;
+  --gray-medium: #7f7f7f;
+  --gray-dark: #3f3f3f;
+}
 
 /*
 TODO: Dark mode

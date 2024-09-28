@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FileClaimButton from "./components/Buttons/FileClaimButton";
 
 export default function Home() {
   return (
@@ -18,8 +19,7 @@ export default function Home() {
         
 
         <div className="flex w-fit items-center justify-center gap-4">
-          <button className="btn btn-wide">
-            <Link href="/claim">File a claim</Link></button>
+          <FileClaimButton />
           <button className="btn btn-wide">Learn more</button>
         </div>
       </div>

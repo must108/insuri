@@ -38,7 +38,7 @@ export default function Navbar() {
 				<div className="flex flex-row gap-4 items-center">
 					<LinkButton link="/about" label="About" />
 					<LinkButton link="/terms" label="Terms" />
-					<LinkButton link="/myclaims" label="My Claims" />
+					<LinkButton link="/my-claims" label="My Claims" />
 				</div>
 
 				<div className="">
