@@ -19,6 +19,43 @@ const insuranceCompanies = [
 	"Other"
 ];
 
+const carMakes = [
+	"Acura",
+	"Audi",
+	"BMW",
+	"Buick",
+	"Cadillac",
+	"Chevrolet",
+	"Chrysler",
+	"Dodge",
+	"Fiat",
+	"Ford",
+	"Genesis",
+	"GMC",
+	"Honda",
+	"Hyundai",
+	"Infiniti",
+	"Jaguar",
+	"Jeep",
+	"Kia",
+	"Land Rover",
+	"Lexus",
+	"Lincoln",
+	"Mazda",
+	"Mercedes-Benz",
+	"Mini",
+	"Mitsubishi",
+	"Nissan",
+	"Porsche",
+	"Ram",
+	"Subaru",
+	"Tesla",
+	"Toyota",
+	"Volkswagen",
+	"Volvo",
+	"Other"
+];
+
 function Stage1() {
 	const [stage, setStage] = useAtom(claimStageAtom);
 
@@ -46,7 +83,7 @@ function Stage1() {
 		}
 	}, [otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany]);
 
-	return <div className='flex w-full flex-col gap-8 p-4 mb-[40%]'>
+	return (<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
 		<div className='flex justify-between'>
 			<p className='text-2xl font-bold'>Incident Information</p>
 			<p className='badge'><strong>Step 1/4</strong></p>
@@ -99,12 +136,12 @@ function Stage1() {
 							Which insurance company are you filing a claim with?
 						</i>
 					</span>
-					
+
 				</label>
 				<select className="select select-bordered w-full" onChange={(e) => setInsuranceCompany(e.target.value)}>
-						<option value=''>Select an option</option>
-						{insuranceCompanies.map((company) => <option key={company} value={company}>{company}</option>)}
-					</select>
+					<option value=''>Select an option</option>
+					{insuranceCompanies.map((company) => <option key={company} value={company}>{company}</option>)}
+				</select>
 			</div>
 
 			<div>
@@ -119,36 +156,125 @@ function Stage1() {
 				<textarea className="textarea w-full" placeholder="Please provide any additional information" onChange={(e) => setOtherComments(e.target.value)}></textarea>
 			</div>
 
-			<button className={`btn btn-primary ${canContinue ? '' : 'btn-disabled'}`} disabled={!canContinue} onClick={() => setStage(2)}>Continue</button>
+			<button className={"btn btn-primary"} disabled={!canContinue} onClick={() => setStage(2)}>Continue</button>
 		</div>
-	</div>
+	</div>);
 }
 
 function Stage2() {
+	const [stage, setStage] = useAtom(claimStageAtom);
 
+	const [carMake, setCarMake] = useState('');
+	const [carModel, setCarModel] = useState('');
+	const [carYear, setCarYear] = useState('');
+	const [carMilage, setCarMilage] = useState(''); // Miles
+	const [canContinue, setCanContinue] = useState(false);
 
-	return (<div className='flex w-full flex-col gap-8 p-4 mb-[40%]'>
-		<div className='flex justify-between'>
-			<p className='text-2xl font-bold'>Vehicle Information</p>
-			<p className='badge'><strong>Step 2/4</strong></p>
+	useEffect(() => {
+		if (carMake && carModel && carYear && carMilage) {
+			setCanContinue(true);
+		}
+	}, [carMake, carModel, carYear, carMilage]);
+
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+
+		console.log({ carMake, carModel, carYear, carMilage });
+
+		// Continue to the next stage
+
+	};
+
+	return (
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+			<div className='flex justify-between w-full'>
+				<p className='text-2xl font-bold'>Vehicle Information</p>
+				<p className='badge'><strong>Step 2/4</strong></p>
+			</div>
+
+			<h2>Now we need some information about your vehicle.</h2>
+
+			<form className="form-control gap-2" onSubmit={handleSubmit}>
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is the make of your vehicle?</i>
+						</span>
+
+					</label>
+					<select
+						className="select select-bordered w-full"
+						onChange={(e) => setCarMake(e.target.value)}
+						required
+					>
+						<option value=''>Select an option</option>
+						{carMakes.map((make) => (
+							<option key={make} value={make}>{make}</option>
+						))}
+					</select>
+				</div>
+
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is the model of your vehicle?</i>
+						</span>
+
+					</label>
+					<input
+						type="text"
+						className="input input-bordered"
+						placeholder="Model"
+						onChange={(e) => setCarModel(e.target.value)}
+						required
+					/>
+				</div>
+
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is the year of your vehicle?</i>
+						</span>
+
+					</label>
+					<input
+						type="number"
+						className="input input-bordered"
+						placeholder="Year"
+						onChange={(e) => setCarYear(e.target.value)}
+						required
+					/>
+				</div>
+
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is the mileage of your vehicle? (mi)</i>
+						</span>
+
+					</label>
+					<input
+						type="number"
+						className="input input-bordered"
+						placeholder="Mileage"
+						onChange={(e) => setCarMilage(e.target.value)}
+						required
+					/>
+				</div>
+
+				<button type="submit" className="btn btn-primary mt-6" disabled={!canContinue}>Continue</button>
+			</form>
 		</div>
-
-		<h2>Now we need some information about your vehicle.</h2>
-
-
-
-	</div>)
+	);
 }
 
 export default function ClaimPage() {
 	const [stage, setStage] = useAtom(claimStageAtom);
 
 	return <>
-		<div className='w-full px-4 py-10 rounded-md flex-1 flex justify-center'>
-			<div className='max-w-[30rem] flex flex-col justify-center'>
-				{stage === 1 ? <Stage1 /> : null}
-				{stage === 2 && <Stage2 />}
-			</div>
+		<div className='w-full px-4 py-10 rounded-md flex-1 flex justify-center items-center'>
+			{stage === 1 ? <Stage1 /> : null}
+			{stage === 2 && <Stage2 />}
 		</div>
 	</>
 }
