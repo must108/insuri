@@ -45,6 +45,8 @@ def upload_file():
     deductible = request.form.get("deductible")
     premium = request.form.get("premium")
     past_claims = request.form.get("claims")
+    police_report = request.form.get("police")
+    injured = request.form.get("injured")
     print("files:", request.files)
 
     if 'file' not in request.files:
@@ -139,6 +141,8 @@ def upload_file():
                     Gender: {gender}
                     Address: {address}
                     Number of Past Insurance Claims: {past_claims}
+                    Is the person injured? {injured}
+                    Was a police report filed? {police_report}
 
                     Here is some information about their vehicle:
                     Make: {car_make}
@@ -156,6 +160,7 @@ def upload_file():
                     These are some of the damage incurred: {damages}
                     This is the severity of the damage, from 0-100 (where 0 is no damage, and 100 is fully totalled): {damage_val}
                     Please consider all variables, including past claims, age, and location, especially for the monthly premium.
+                    Also consider police report, and potential injury, if it matters.
                 """
                 +
                 """
