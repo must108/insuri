@@ -7,7 +7,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-llm = ChatOpenAI(
+llm = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
     model="gpt-4o"
 )
