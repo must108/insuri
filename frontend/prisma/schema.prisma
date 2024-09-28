@@ -19,10 +19,16 @@ model users {
   address           String?
   age               BigInt?
   gender            String?
-  car_make          String?
-  car_model         String?
-  car_year          String?
   insurance_company String?
-  deductible        String?
   premium_cost      String?
+  deductible        BigInt?
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model claims {
+  id          BigInt  @id @default(autoincrement())
+  car_make    String?
+  car_model   String?
+  car_year    String?
+  car_mileage String?
 }
