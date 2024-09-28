@@ -21,7 +21,7 @@ model = AutoModelForImageClassification.from_pretrained("beingamit99/car_damage_
 
 @app.route("/")
 def home():
-    return {"message": "Welcome to the Car Damage Detection API"}
+    return {"message": "Hello World!"}
 
 @app.route("/detect_damage", methods = ["POST"])
 def upload_file():
