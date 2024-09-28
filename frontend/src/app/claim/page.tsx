@@ -36,7 +36,7 @@ function Stage1() {
 		} else {
 			setCanContinue(false);
 		}
-	}, [otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany]);
+	}, [otherParty, otherPartyDesc, injured, injuryDesc, insuranceCompany]);
 
 	const handleSubmit = useCallback((e: React.FormEvent) => {
 		e.preventDefault();
@@ -55,84 +55,84 @@ function Stage1() {
 
 		// Continue to the next stage
 		setStage(2);
-	}, [otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany, otherComments]);
+	}, [claimData, otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany, otherComments, setClaimData, setStage]);
 
-	return (<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
-		<div className='flex justify-between'>
-			<p className='text-2xl font-bold'>Incident Information</p>
-			<p className='badge'><strong>Step 1/4</strong></p>
+	return (
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+			<div className='flex justify-between'>
+				<p className='text-2xl font-bold'>Incident Information</p>
+				<p className='badge'><strong>Step 1/5</strong></p>
+			</div>
+
+			<h2>It looks like you were involved in an auto incident. Let’s guide you through the necessary steps to handle the situation.</h2>
+
+			<form className="form-control gap-2" onSubmit={handleSubmit}>
+				<div>
+					<label className="label cursor-pointer">
+						<span className="label-text">
+							<i>
+								Was there another party involved in the incident?
+							</i>
+						</span>
+						<input type="checkbox" className="checkbox checkbox-primary" onChange={(e) => setOtherParty(e.target.checked)} />
+					</label>
+
+					{otherParty && <textarea className="textarea w-full" placeholder="Please input any insurance identification information about the other party" onChange={(e) => setOtherPartyDesc(e.target.value)}></textarea>}
+				</div>
+
+				<div>
+					<label className="label cursor-pointer">
+						<span className="label-text">
+							<i>
+								Have you sustained any injuries from the incident?
+							</i>
+						</span>
+						<input type="checkbox" className="checkbox checkbox-primary" onChange={(e) => setInjured(e.target.checked)} />
+					</label>
+
+					{injured && <textarea className="textarea w-full" placeholder="Please describe your injury" onChange={(e) => setInjuryDesc(e.target.value)}></textarea>}
+				</div>
+
+				<div>
+					<label className="label">
+						<span className="label-text">
+							<i>
+								Was a police report filed?
+							</i>
+						</span>
+						<input type="checkbox" className="checkbox checkbox-primary" onChange={(e) => setPoliceReport(e.target.checked)} />
+					</label>
+				</div>
+
+				<div>
+					<label className="label">
+						<span className="label-text">
+							<i>
+								Which insurance company are you filing a claim with?
+							</i>
+						</span>
+					</label>
+					<select className="select select-bordered w-full" onChange={(e) => setInsuranceCompany(e.target.value)}>
+						<option value=''>Select an option</option>
+						{insuranceCompanies.map((company) => <option key={company} value={company}>{company}</option>)}
+					</select>
+				</div>
+
+				<div>
+					<label className="label">
+						<span className="label-text">
+							<i>
+								Any other comments?
+							</i>
+						</span>
+					</label>
+					<textarea className="textarea w-full" placeholder="Please provide any additional information" onChange={(e) => setOtherComments(e.target.value)}></textarea>
+				</div>
+
+				<button type='submit' className={"btn btn-primary"} disabled={!canContinue}>Continue</button>
+			</form>
 		</div>
-
-		<h2>It looks like you were involved in an auto incident. Let’s guide you through the necessary steps to handle the situation.</h2>
-
-		<form className="form-control gap-2" onSubmit={handleSubmit}>
-			<div>
-				<label className="label cursor-pointer">
-					<span className="label-text">
-						<i>
-							Was there another party involved in the incident?
-						</i>
-					</span>
-					<input type="checkbox" className="checkbox checkbox-primary" onChange={(e) => setOtherParty(e.target.checked)} />
-				</label>
-
-				{otherParty && <textarea className="textarea w-full" placeholder="Please input any insurance identification information about the other party" onChange={(e) => setOtherPartyDesc(e.target.value)}></textarea>}
-			</div>
-
-			<div>
-				<label className="label cursor-pointer">
-					<span className="label-text">
-						<i>
-							Have you sustained any injuries from the incident?
-						</i>
-					</span>
-					<input type="checkbox" className="checkbox checkbox-primary" onChange={(e) => setInjured(e.target.checked)} />
-				</label>
-
-				{injured && <textarea className="textarea w-full" placeholder="Please describe your injury" onChange={(e) => setInjuryDesc(e.target.value)}></textarea>}
-			</div>
-
-			<div>
-				<label className="label">
-					<span className="label-text">
-						<i>
-							Was a police report filed?
-						</i>
-					</span>
-					<input type="checkbox" className="checkbox checkbox-primary" onChange={(e) => setPoliceReport(e.target.checked)} />
-				</label>
-			</div>
-
-			<div>
-				<label className="label">
-					<span className="label-text">
-						<i>
-							Which insurance company are you filing a claim with?
-						</i>
-					</span>
-
-				</label>
-				<select className="select select-bordered w-full" onChange={(e) => setInsuranceCompany(e.target.value)}>
-					<option value=''>Select an option</option>
-					{insuranceCompanies.map((company) => <option key={company} value={company}>{company}</option>)}
-				</select>
-			</div>
-
-			<div>
-				<label className="label">
-					<span className="label-text">
-						<i>
-							Any other comments?
-						</i>
-					</span>
-				</label>
-
-				<textarea className="textarea w-full" placeholder="Please provide any additional information" onChange={(e) => setOtherComments(e.target.value)}></textarea>
-			</div>
-
-			<button type='submit' className={"btn btn-primary"} disabled={!canContinue}>Continue</button>
-		</form>
-	</div>);
+	);
 }
 
 function Stage2() {
@@ -167,13 +167,13 @@ function Stage2() {
 
 		// Continue to the next stage
 		setStage(3);
-	}, [carMake, carModel, carYear, carMilage]);
+	}, [carMake, carModel, carYear, carMilage, claimData, setClaimData, setStage]);
 
 	return (
 		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
 			<div className='flex justify-between w-full'>
 				<p className='text-2xl font-bold'>Vehicle Information</p>
-				<p className='badge'><strong>Step 2/4</strong></p>
+				<p className='badge'><strong>Step 2/5</strong></p>
 			</div>
 
 			<h2>Now we need some information about your vehicle.</h2>
@@ -184,7 +184,6 @@ function Stage2() {
 						<span className="label-text">
 							<i>What is the make of your vehicle?</i>
 						</span>
-
 					</label>
 					<select
 						className="select select-bordered w-full"
@@ -203,7 +202,6 @@ function Stage2() {
 						<span className="label-text">
 							<i>What is the model of your vehicle?</i>
 						</span>
-
 					</label>
 					<input
 						type="text"
@@ -219,7 +217,6 @@ function Stage2() {
 						<span className="label-text">
 							<i>What is the year of your vehicle?</i>
 						</span>
-
 					</label>
 					<input
 						type="number"
@@ -235,7 +232,6 @@ function Stage2() {
 						<span className="label-text">
 							<i>What is the mileage of your vehicle? (mi)</i>
 						</span>
-
 					</label>
 					<input
 						type="number"
@@ -255,6 +251,7 @@ function Stage2() {
 function Stage3() {
 	const [stage, setStage] = useAtom(claimStageAtom);
 	const [claimData, setClaimData] = useAtom(claimDataAtom);
+
 	interface FileInput {
 		file: File | null;
 		key: string;
@@ -292,13 +289,13 @@ function Stage3() {
 		});
 
 		setStage(4);
-	}, [fileInputs]);
+	}, [fileInputs, claimData, setClaimData, setStage]);
 
 	return (
 		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
 			<div className='flex justify-between w-full'>
 				<p className='text-2xl font-bold'>Scene Analysis</p>
-				<p className='badge'><strong>Step 3/4</strong></p>
+				<p className='badge'><strong>Step 3/5</strong></p>
 			</div>
 
 			<h2>Upload up to 5 images of your vehicle so we can better understand the incident.</h2>
@@ -310,11 +307,12 @@ function Stage3() {
 				</button>
 			</div>
 			<form className="form-control gap-2" onSubmit={handleSubmit}>
-				{fileInputs.map((input, index) => (
+				{fileInputs.map((input) => (
 					<div key={input.key} className='flex gap-2'>
 						<input type="file" accept="image/*" onChange={(e) => fileInputChanged(e.target.files, input.key)} className="file-input w-full file-input-sm" />
 
 						<button
+							type="button"
 							onClick={() => deleteInput(input.key)}
 						>
 							<Icon icon="mdi:trash-outline" />
@@ -322,45 +320,221 @@ function Stage3() {
 					</div>
 				))}
 
-				<button type="submit" className="btn btn-primary mt-6" disabled={validImages == 0}>Continue</button>
+				<button type="submit" className="btn btn-primary mt-6" disabled={validImages === 0}>Continue</button>
 			</form>
 		</div>
 	);
 }
 
 function Stage4() {
+	const [stage, setStage] = useAtom(claimStageAtom);
+	const [claimData, setClaimData] = useAtom(claimDataAtom);
+
+	const [age, setAge] = useState(0);
+	const [gender, setGender] = useState('');
+	const [address, setAddress] = useState('');
+	const [deductible, setDeductible] = useState(0);
+	const [premium, setPremium] = useState(0);
+
+	const [canContinue, setCanContinue] = useState(false);
+
+	useEffect(() => {
+		if (age > 0 && gender && address && deductible > 0 && premium > 0) {
+			setCanContinue(true);
+		} else {
+			setCanContinue(false);
+		}
+	}, [age, gender, address, deductible, premium]);
+
+	const handleSubmit = useCallback((e: React.FormEvent) => {
+		e.preventDefault();
+
+		// Save the data
+		setClaimData({
+			...claimData,
+			age,
+			gender,
+			address,
+			deductible,
+			premium,
+		});
+
+		// Continue to the next stage
+		setStage(5);
+	}, [age, gender, address, deductible, premium, claimData, setClaimData, setStage]);
+
+	return (
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+			<div className='flex justify-between w-full'>
+				<p className='text-2xl font-bold'>Additional Information</p>
+				<p className='badge'><strong>Step 4/5</strong></p>
+			</div>
+
+			<h2>Please provide some additional information to complete your claim.</h2>
+
+			<form className="form-control gap-2" onSubmit={handleSubmit}>
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is your age?</i>
+						</span>
+					</label>
+					<input
+						type="number"
+						className="input input-bordered"
+						placeholder="Age"
+						onChange={(e) => setAge(parseInt(e.target.value))}
+						required
+					/>
+				</div>
+
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is your gender?</i>
+						</span>
+					</label>
+					<select
+						className="select select-bordered w-full"
+						onChange={(e) => setGender(e.target.value)}
+						required
+					>
+						<option value=''>Select an option</option>
+						<option value='male'>Male</option>
+						<option value='female'>Female</option>
+						<option value='other'>Other</option>
+					</select>
+				</div>
+
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is your address?</i>
+						</span>
+					</label>
+					<input
+						type="text"
+						className="input input-bordered"
+						placeholder="Address"
+						onChange={(e) => setAddress(e.target.value)}
+						required
+					/>
+				</div>
+
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is your deductible?</i>
+						</span>
+					</label>
+					<input
+						type="number"
+						className="input input-bordered"
+						placeholder="Deductible"
+						onChange={(e) => setDeductible(parseInt(e.target.value))}
+						required
+					/>
+				</div>
+
+				<div className='flex flex-col'>
+					<label className="label">
+						<span className="label-text">
+							<i>What is your premium?</i>
+						</span>
+					</label>
+					<input
+						type="number"
+						className="input input-bordered"
+						placeholder="Premium"
+						onChange={(e) => setPremium(parseInt(e.target.value))}
+						required
+					/>
+				</div>
+
+				<button type="submit" className="btn btn-primary mt-6" disabled={!canContinue}>Continue</button>
+			</form>
+		</div>
+	);
+}
+
+function Stage5() {
+	const [stage, setStage] = useAtom(claimStageAtom);
+	const [claimData, setClaimData] = useAtom(claimDataAtom);
 	// 0 = Not started, 1 = Processing, 2 = Done
 	const [processingState, setProcessingState] = useState(0);
+	const hasStartedProcessing = useRef(false);
+
+	type Response = {
+		claim_amount: 11500,
+		deductible_amount: 500,
+		monthly_premium_increase: 50,
+		repair_cost: 12000
+	} | null;
+
+	const [response, setResponse] = useState<Response>(null);
 
 	// On mount, start processing
 	useEffect(() => {
-		if (processingState !== 0) return;
+		if (hasStartedProcessing.current) return;
+		if (stage !== 5) return;
+		hasStartedProcessing.current = true;
 		setProcessingState(1);
 
-		// Simulate processing time
-		setTimeout(() => {
+		const formData = new FormData();
+		formData.append('age', claimData.age.toString());
+		formData.append('gender', claimData.gender);
+		formData.append('address', claimData.address);
+		formData.append('make', claimData.carMake);
+		formData.append('model', claimData.carModel);
+		formData.append('year', claimData.carYear.toString());
+		formData.append('mileage', claimData.carMileage.toString());
+		formData.append('insurance_company', claimData.insuranceCompany);
+		formData.append('deductible', claimData.deductible.toString());
+		formData.append('premium', claimData.premium.toString());
+		formData.append('file', claimData.files[0]);
+		formData.append('claims', '0');
+
+		axios.post("https://insurify-backend-production.up.railway.app/detect_damage", formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		}).then((response) => {
+			setResponse(response.data);
 			setProcessingState(2);
-		}, 3000);
-	}, []);
+		}).catch((error) => {
+			console.error(error);
+			setProcessingState(3);
+		});
+	}, [stage, hasStartedProcessing, claimData]);
 
 	return (
 		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
 			<div className='flex justify-between w-full'>
 				<p className='text-2xl font-bold'>Processing Claim Data</p>
-				<p className='badge'><strong>Step 4/4</strong></p>
+				<p className='badge'><strong>Step 5/5</strong></p>
 			</div>
 
 			<h2>Thank you for submitting your claim. We are now processing your information and generating a report.</h2>
 
 			{processingState <= 1 && <span className="loading loading-dots loading-md"></span>}
-			{processingState === 2 && <>
 
-				{{/* <p>Claim submitted!</p>
-				<Link href={`/my-claims/${claimRequest.id}`}> */}}
-			</>
+			{processingState === 2 && (
+				<>
+					<p>Claim submitted!</p>
+					<Link href={`/my-claims/${"test"}`}>View your claim</Link>
+				</>
+			)}
+
+			{
+				processingState === 3 && (
+					<>
+						<p>There was an error processing your claim. Please try again.</p>
+						<button onClick={() => setProcessingState(0)}>Try again</button>
+					</>
+				)
 			}
 		</div>
-	)
+	);
 }
 
 export default function ClaimPage() {
@@ -372,6 +546,7 @@ export default function ClaimPage() {
 			{stage === 2 && <Stage2 />}
 			{stage === 3 && <Stage3 />}
 			{stage === 4 && <Stage4 />}
+			{stage === 5 && <Stage5 />}
 		</div>
 	</>
 }
