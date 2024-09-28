@@ -190,6 +190,40 @@ def upload_file():
 
     return jsonify({ "error": "File type not allowed!" }), 400
 
+@app.route("/chat", methods=["POST"])
+def chatbot():
+    text = request.form.get("text")
+
+    messages = [
+        {
+            "role": "system",
+            "content": """
+                You are an expert in the auto insurance industry. 
+                DO NOT ANSWER QUESTIONS NOT ABOUT INSURANCE!
+                You are answering questions for a user who wants to 
+                know more about auto insurance. Kindly explain to them 
+                the answers to their questions. Keep the answers concise, one sentence
+                maximum. Do not answer questions not about auto insurance. Do not even 
+                contextualize or attempt to say anything about the topic. Just let them
+                know that auto insurance must be talked about only.
+            """
+        },
+        {
+            "role": "user",
+            "content": f"User's input: {text}",
+        }
+    ]
+
+    res = client.chat.completions.create(
+        model="gpt-4o-2024-08-06",
+        messages=messages,
+        max_tokens=300
+    )
+
+    res_content = res.choices[0].message.content
+    if "insurance" not in res_content and "car" not in res_content and "auto" not in res_content:
+        return jsonify({ "response": "Ask about car insurance!"})
+    return jsonify({ "response": res_content })
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)
