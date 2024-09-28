@@ -26,12 +26,27 @@ def allowed_file(filename):
 processor = AutoImageProcessor.from_pretrained("beingamit99/car_damage_detection")
 model = AutoModelForImageClassification.from_pretrained("beingamit99/car_damage_detection")
 
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 @app.route("/")
 def home():
     return {"message": "Hello World!"}
 
 @app.route("/detect_damage", methods = ["POST"])
 def upload_file():
+    age = request.form.get("age")
+    gender = request.form.get("gender")
+    address = request.form.get("address")
+    car_make = request.form.get("make")
+    car_model = request.form.get("model")
+    car_year = request.form.get("year")
+    car_mileage = request.form.get("mileage")
+    insurance_company = request.form.get("insurance_company")
+    deductible = request.form.get("deductible")
+    premium = request.form.get("premium")
+    past_claims = request.form.get("claims")
+    police_report = request.form.get("police")
+    injured = request.form.get("injured")
     print("files:", request.files)
 
     if 'file' not in request.files:
@@ -99,8 +114,6 @@ def upload_file():
             }
         ]
 
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
         res = client.chat.completions.create(
             model="gpt-4o-2024-08-06",
             messages=messages,
@@ -108,22 +121,75 @@ def upload_file():
         )
 
         res_content = res.choices[0].message.content
-        print("RES CONTENT:", res_content)
         response_data = json.loads(res_content)
 
-        damage = response_data.get("damage")
-        damage_type = response_data.get("damage_type")
+        damage_val = response_data.get("damage")
+        damages = response_data.get("damage_type")
+    
+        second_messages = [
+            {
+                "role": "system",
+                "content": f"""
+                    You are an expert insurance agent, tasked with helping customers with their insurance claims.
+                """
+            },
+            {
+                "role": "user",
+                "content": f"""
+                    Here is some information about the customer:
+                    Age: {age}
+                    Gender: {gender}
+                    Address: {address}
+                    Number of Past Insurance Claims: {past_claims}
+                    Is the person injured? {injured}
+                    Was a police report filed? {police_report}
 
-        return jsonify({ 
-            "predicted_damage": predicted_class_name, 
-            "pred_proba": predicted_proba,
-            "damage_val": damage,
-            "damage_type": damage_type
-        })
+                    Here is some information about their vehicle:
+                    Make: {car_make}
+                    Model: {car_model}
+                    Year: {car_year}
+                    Mileage: {car_mileage}
+
+                    Here is some information about their insurance:
+                    Insurance Company: {insurance_company}
+                    Deductible Amount: {deductible}
+                    Premium Details: {premium}
+
+                    This customer has suffered a car accident, and they want to know their repair cost,
+                    their claim amount, their deductible amount, and their monthly premium increase. 
+                    These are some of the damage incurred: {damages}
+                    This is the severity of the damage, from 0-100 (where 0 is no damage, and 100 is fully totalled): {damage_val}
+                    Please consider all variables, including past claims, age, and location, especially for the monthly premium.
+                    Also consider police report, and potential injury, if it matters.
+                """
+                +
+                """
+                    Return the appropriate values given the data, strictly in JSON format, like this:
+                        { 
+                        "repair_cost": x,    
+                        "claim_amount": y,
+                        "deductible_amount": z,
+                        "monthly_premium_increase": a,
+                        }
+                    DO NOT RETURN ANYTHING ELSE! Just JSON data, and not in a code box. just plain JSON text
+                """
+            }
+        ]
+
+        res = client.chat.completions.create(
+            model="gpt-4o-2024-08-06",
+            messages=second_messages,
+            max_tokens=300
+        )
+
+        res_content = res.choices[0].message.content
+        print(res_content)
+        response_data = json.loads(res_content)
+
+        return response_data
 
     return jsonify({ "error": "File type not allowed!" }), 400
 
 
-
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(host="0.0.0.0", port=5001)

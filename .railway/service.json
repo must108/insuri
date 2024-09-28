@@ -1,0 +1,8 @@
+{
+    "build": {
+        "context": "backend"
+    },
+    "deploy": {
+        "start": "gunicorn api:app"
+    }
+}

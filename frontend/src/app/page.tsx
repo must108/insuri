@@ -8,15 +8,15 @@ export default function Home() {
     <div>
       <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
 
-        <div className="gap-8">
-        <p className="text-6xl font-bold text-center">
-          Simplified Literacy and Claim Assistance for Car Incidents
-        </p>
-        <p className="text-3xl text-center">
-          Navigating car incident claims with integrity and transparency, followed by essential insurance education.
-        </p>
+        <div className="gap-10">
+          <p className="text-5xl font-bold text-center">
+            Simplified Auto Insurance Claims
+          </p>
+          <p className="text-xl text-center">
+            Streamline your auto insurance claims and master your insurance journey with our easy-to-use platform. Trust us to help you get back on the road faster.
+          </p>
         </div>
-        
+
         <div className="flex w-fit items-center justify-center gap-4 btn-primary">
           <FileClaimButton />
           <LearnMoreButton />
