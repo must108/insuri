@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { claimStageAtom } from '../lib/state';
 import { useAtom } from 'jotai';
 import InfoHelper from '../components/Buttons/InfoHelper';
+import { Icon } from '@iconify/react';
+
 
 const insuranceCompanies = [
 	"State Farm",
@@ -319,18 +321,20 @@ function Stage3() {
 			
 			<div className='flex justify-between'>
 				<p>Images ({fileInputs.length}/5)</p>
-				<button onClick={addImage}>+</button>
+				<button onClick={addImage} disabled={fileInputs.length >= 5}>
+					<Icon icon="mdi:add-circle-outline" opacity={fileInputs.length >= 5 ? 0.3 : 1} />
+				</button>
 			</div>
 			<form className="form-control gap-2" ref={formRef}>
 			
 				{fileInputs.map((input, index) => (
 					<div key={input.key} className='flex gap-2'>
-						<input type="file" onChange={(e) => fileInputChanged(e.target.files, input.key)} className="file-input w-full file-input-sm" />
+						<input type="file" accept="image/*" onChange={(e) => fileInputChanged(e.target.files, input.key)} className="file-input w-full file-input-sm" />
 
 						<button
 							onClick={() => deleteInput(input.key)}
 						>
-							(-)
+							<Icon icon="mdi:trash-outline" />
 						</button>
 					</div>
 				))}
