@@ -5,7 +5,8 @@ import os
 load_dotenv()
 
 llm = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY"),
+    model="gpt-4"
 )
 
 prompt = f"""
