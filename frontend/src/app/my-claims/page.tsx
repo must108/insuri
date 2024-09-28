@@ -3,7 +3,7 @@ import FileClaimButton from "../components/Buttons/FileClaimButton";
 
 export default function MyClaimsPage() {
 
-	return (<div className="w-full px-4 py-10 rounded-md flex-1 flex flex-col items-center max-w-4xl mx-auto">
+	return (<div className="w-full px-4 py-10 rounded-md flex-1 flex flex-col items-center max-w-5xl mx-auto">
 		<SignedOut>
 			<div className="flex-1 flex flex-col items-center justify-center gap-4 mb-[30%]">
 				<div>
@@ -17,7 +17,7 @@ export default function MyClaimsPage() {
 			</div>
 		</SignedOut>
 		<SignedIn>
-			<div className="flex-1 flex flex-col w-full py-16 bg-red-500">
+			<div className="flex-1 flex flex-col w-full py-16">
 				<div className="flex flex-row justify-between">
 					<div>
 						<p className="text-2xl">My Claims</p>

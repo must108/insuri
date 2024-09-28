@@ -1,3 +1,3 @@
 import { atom } from 'jotai';
 
-export const claimStageAtom = atom(0);
+export const claimStageAtom = atom(1);
