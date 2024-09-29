@@ -18,28 +18,28 @@ const Skeleton = () => (
 
 const items = [
   {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
+    title: "Insurance 101",
+    description: "Car insurance made easy for college beginners.",
     header: <Skeleton />,
     className: "md:col-span-2",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
-    link: "/learn/beginner"
+    link: "/learn/beginner-guide"
   },
   {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
+    title: "Lower Your Insurance",
+    description: "On a tight budget? We can have got your back covered.",
     header: <Skeleton />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-    link: "/learn/car-accident"
+    link: "/learn/lower-insurance-info"
   },
   {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
+    title: "Car Accident Guide",
+    description: "Had a car accident? We’ll guide you through no problem. ",
     header: <Skeleton />,
     className: "md:col-span-3",
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
-    link: "/learn/lower-insurance"
+    link: "/learn/car-accident-info"
   },
 ];
 
