@@ -45,7 +45,7 @@ def upload_file():
     deductible = request.form.get("deductible")
     premium = request.form.get("premium")
     past_claims = request.form.get("claims")
-    police_report = request.form.get("policeReport")
+    police_report = request.form.get("police")
     injured = request.form.get("injured")
     print("files:", request.files)
 
