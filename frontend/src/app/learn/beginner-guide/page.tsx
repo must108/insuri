@@ -17,7 +17,7 @@ export default function BeginnerGuide() {
       <div className="flex flex-col items-center justify-between p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
         <div className="gap-10 flex-grow flex flex-col items-center justify-center">
           <p className="text-5xl font-bold text-center">
-            Car Insurance 101
+            Car Insurance 101: A College Student's Guide
           </p>
           <p className="text-xl text-center">
             Your go-to resource for understanding car insurance.
