@@ -20,7 +20,7 @@ const items = [
   {
     title: "Insurance 101",
     description: "Car insurance made easy for college beginners.",
-    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg' />,
+    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-2",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
     link: "/learn/beginner-guide"
@@ -28,7 +28,7 @@ const items = [
   {
     title: "Lower Your Insurance",
     description: "On a tight budget? We can have got your back covered.",
-    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg' />,
+    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
     link: "/learn/lower-insurance-info"
@@ -36,7 +36,7 @@ const items = [
   {
     title: "Car Accident Guide",
     description: "Had a car accident? We’ll guide you through no problem. ",
-    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg' />,
+    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-3",
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
     link: "/learn/car-accident-info"
