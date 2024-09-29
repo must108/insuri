@@ -9,6 +9,7 @@ import { carMakes, insuranceCompanies } from '../lib/consts';
 import Link from 'next/link';
 
 import axios from 'axios';
+import { CreateClaimResponse } from '../api/claim/route';
 
 function Stage1() {
 	const [stage, setStage] = useAtom(claimStageAtom);
@@ -460,52 +461,77 @@ function Stage4() {
 function Stage5() {
 	const [stage, setStage] = useAtom(claimStageAtom);
 	const [claimData, setClaimData] = useAtom(claimDataAtom);
-	// 0 = Not started, 1 = Processing, 2 = Done
+	// 0 = Not started, 1 = Processing, 2 = Done, 3 = Error
 	const [processingState, setProcessingState] = useState(0);
 	const hasStartedProcessing = useRef(false);
 
-	type Response = {
-		claim_amount: 11500,
-		deductible_amount: 500,
-		monthly_premium_increase: 50,
-		repair_cost: 12000
+	type AIResponse = {
+		claim_amount: number;
+		deductible_amount: number;
+		monthly_premium_increase: number;
+		repair_cost: number;
 	} | null;
 
-	const [response, setResponse] = useState<Response>(null);
+
+	const [airesponse, setAiResponse] = useState<AIResponse>(null);
+	const [dbresponse, setDbResponse] = useState<CreateClaimResponse | null>(null);
 
 	// On mount, start processing
 	useEffect(() => {
 		if (hasStartedProcessing.current) return;
 		if (stage !== 5) return;
+		if (processingState !== 0) return;
 		hasStartedProcessing.current = true;
 		setProcessingState(1);
 
-		const formData = new FormData();
-		formData.append('age', claimData.age.toString());
-		formData.append('gender', claimData.gender);
-		formData.append('address', claimData.address);
-		formData.append('make', claimData.carMake);
-		formData.append('model', claimData.carModel);
-		formData.append('year', claimData.carYear.toString());
-		formData.append('mileage', claimData.carMileage.toString());
-		formData.append('insurance_company', claimData.insuranceCompany);
-		formData.append('deductible', claimData.deductible.toString());
-		formData.append('premium', claimData.premium.toString());
-		formData.append('file', claimData.files[0]);
-		formData.append('claims', '0');
+		(async () => {
 
-		axios.post("https://insurify-backend-production.up.railway.app/detect_damage", formData, {
-			headers: {
-				'Content-Type': 'multipart/form-data',
-			},
-		}).then((response) => {
-			setResponse(response.data);
-			setProcessingState(2);
-		}).catch((error) => {
-			console.error(error);
-			setProcessingState(3);
-		});
-	}, [stage, hasStartedProcessing, claimData]);
+			const formData = new FormData();
+			formData.append('age', claimData.age.toString());
+			formData.append('gender', claimData.gender);
+			formData.append('address', claimData.address);
+			formData.append('make', claimData.carMake);
+			formData.append('model', claimData.carModel);
+			formData.append('year', claimData.carYear.toString());
+			formData.append('mileage', claimData.carMileage.toString());
+			formData.append('insurance_company', claimData.insuranceCompany);
+			formData.append('deductible', claimData.deductible.toString());
+			formData.append('premium', claimData.premium.toString());
+			formData.append('file', claimData.files[0]);
+			formData.append('claims', '0');
+
+			axios.post("https://insurify-backend-production.up.railway.app/detect_damage", formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}).then((response) => {
+				setAiResponse(response.data);
+
+				// Append AI response to formData
+				if (response.data) {
+					formData.append('claim_amount', response.data.claim_amount.toString());
+					formData.append('deductible_amount', response.data.deductible_amount.toString());
+					formData.append('monthly_premium_increase', response.data.monthly_premium_increase.toString());
+					formData.append('repair_cost', response.data.repair_cost.toString());
+				} else {
+					setProcessingState(3);
+					console.error("AI response not found");
+					return;
+				}
+
+				axios.post("/api/claim", formData).then((response) => {
+					setDbResponse(response.data);
+					setProcessingState(2);
+				}).catch((error) => {
+					console.error(error);
+					setProcessingState(3);
+				});
+			}).catch((error) => {
+				console.error(error);
+				setProcessingState(3);
+			});
+		})();
+	}, [stage, processingState, claimData]);
 
 	return (
 		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
@@ -521,18 +547,19 @@ function Stage5() {
 			{processingState === 2 && (
 				<>
 					<p>Claim submitted!</p>
-					<Link href={`/my-claims/${"test"}`}>View your claim</Link>
+					<Link href={`/my-claims/${dbresponse?.data.id}`}>View your claim</Link>
 				</>
 			)}
 
-			{
-				processingState === 3 && (
-					<>
-						<p>There was an error processing your claim. Please try again.</p>
-						<button onClick={() => setProcessingState(0)}>Try again</button>
-					</>
-				)
-			}
+			{processingState === 3 && (
+				<>
+					<p>There was an error processing your claim. Please try again.</p>
+					<button onClick={() => {
+						setProcessingState(0);
+						hasStartedProcessing.current = false;
+					}}>Try again</button>
+				</>
+			)}
 		</div>
 	);
 }
