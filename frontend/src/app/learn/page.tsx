@@ -18,7 +18,7 @@ const Skeleton = () => (
 
 const items = [
   {
-    title: "Car Insurance 101: A College Student's Guide",
+    title: "Car Insurance 101",
     description: "Car insurance made easy for college beginners.",
     header: <Image src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-2",
