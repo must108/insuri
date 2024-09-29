@@ -21,7 +21,7 @@ const Chatbot = () => {
             setMessages(newMessages);
             setInput('');
             try {
-                const res = await axios.post('https://insurify-backend-production.up.railway.app/chat', { text: input });
+                const res = await axios.post('http://127.0.0.1:5001/chat', { text: input });
                 const botMessage = res.data.response;
                 setMessages([...newMessages, { text: botMessage, user: 'bot' }]);
             } catch (error) {
