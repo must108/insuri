@@ -462,7 +462,7 @@ function Stage5() {
 	const [stage, setStage] = useAtom(claimStageAtom);
 	const [claimData, setClaimData] = useAtom(claimDataAtom);
 	// 0 = Not started, 1 = Processing, 2 = Done, 3 = Error
-	const [processingState, setProcessingState] = useState(0);
+	const [processingState, setProcessingState] = useState(2);
 	const hasStartedProcessing = useRef(false);
 
 	type AIResponse = {
@@ -485,7 +485,6 @@ function Stage5() {
 		setProcessingState(1);
 
 		(async () => {
-
 			const formData = new FormData();
 			formData.append('age', claimData.age.toString());
 			formData.append('gender', claimData.gender);
@@ -540,27 +539,58 @@ function Stage5() {
 				<p className='badge'><strong>Step 5/5</strong></p>
 			</div>
 
-			<h2>Thank you for submitting your claim. We are now processing your information and generating a report.</h2>
+			<h2>
+				Thank you for submitting your claim. We are now processing your information and generating a report. Your claim will be filed with your insurance provider shortly.
+			</h2>
 
 			{processingState <= 1 && <span className="loading loading-dots loading-md"></span>}
 
 			{processingState === 2 && (
 				<>
-					<p>Claim submitted!</p>
-					<Link href={`/my-claims/${dbresponse?.data.id}`}>View your claim</Link>
-				</>
-			)}
+					<div>
+						<h2>AI Generated Data</h2>
+						{airesponse && (
+							<div className="grid grid-cols-2">
+								<div className="stat">
+									<div className="stat-title">Claim Amount</div>
+									<div className="stat-value">${airesponse.claim_amount}</div>
+								</div>
+								<div className="stat">
+									<div className="stat-title">Deductible Amount</div>
+									<div className="stat-value">${airesponse.deductible_amount}</div>
+								</div>
+								<div className="stat">
+									<div className="stat-title">Monthly Premium Increase</div>
+									<div className="stat-value">${airesponse.monthly_premium_increase}</div>
+								</div>
+								<div className="stat">
+									<div className="stat-title">Repair Cost</div>
+									<div className="stat-value">${airesponse.repair_cost}</div>
+								</div>
+							</div>
+						)}
+					</div>
 
-			{processingState === 3 && (
-				<>
-					<p>There was an error processing your claim. Please try again.</p>
-					<button onClick={() => {
-						setProcessingState(0);
-						hasStartedProcessing.current = false;
-					}}>Try again</button>
+					<div className='flex justify-end'>
+						<Link href={`/my-claims/${dbresponse?.data.id}`}><button className='btn btn-link'>View Claim</button></Link>
+						<Link href='/my-claims'><button className='btn btn-primary'>View All Claims</button></Link>
+					</div>
 				</>
-			)}
-		</div>
+			)
+			}
+
+			{
+				processingState === 3 && (
+					<>
+						<p>There was an error processing your claim. Please try again.</p>
+						<button onClick={() => {
+							setProcessingState(0);
+							hasStartedProcessing.current = false;
+						}}>Try again</button>
+					</>
+				)
+			}
+		</div >
 	);
 }
 

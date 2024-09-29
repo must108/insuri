@@ -90,8 +90,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      data,
-    });
+      data: createClaim
+    } as CreateClaimResponse);
   } catch (error) {
     console.error(error);
     return NextResponse.json({
