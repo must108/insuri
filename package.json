@@ -7,5 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@tabler/icons-react": "^3.19.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.9.0",
+    "tailwind-merge": "^2.5.2"
+  }
 }

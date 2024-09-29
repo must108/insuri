@@ -496,8 +496,12 @@ function Stage5() {
 			formData.append('insurance_company', claimData.insuranceCompany);
 			formData.append('deductible', claimData.deductible.toString());
 			formData.append('premium', claimData.premium.toString());
-			formData.append('file', claimData.files[0]);
 			formData.append('claims', '0');
+
+			// Upload images
+			claimData.files.forEach((file, index) => {
+				formData.append("files", file);
+			});
 
 			axios.post("https://insurify-backend-production.up.railway.app/detect_damage", formData, {
 				headers: {
