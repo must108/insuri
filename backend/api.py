@@ -67,7 +67,7 @@ def upload_file():
         print(fi.filename)   
         if allowed_file(fi.filename):
             the_file = fi.read()
-            image = Image.open(io.BytesIO(the_file))
+            image = Image.open(io.BytesIO(the_file)).convert("RGB")
             base64_image = base64.b64encode(the_file).decode("utf-8")
 
             inputs = processor(images=image, return_tensors="pt")
