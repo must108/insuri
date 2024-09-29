@@ -556,7 +556,7 @@ function Stage5() {
 			{processingState === 2 && (
 				<>
 					<div>
-						<h2>AI Generated Data</h2>
+						<h2>These numbers are rough estimates. Do not rely on them.</h2>
 						{airesponse && (
 							<div className="grid grid-cols-2">
 								<div className="stat">
