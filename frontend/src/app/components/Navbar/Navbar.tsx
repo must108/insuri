@@ -30,7 +30,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <div className="drawer">
+        <div className="drawer z-50">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" checked={isOpen} readOnly />
             <div className="drawer-content">
                 <div className="fixed w-full h-16 bg-[--background] flex">
