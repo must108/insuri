@@ -21,8 +21,8 @@ const Chatbot = () => {
             setMessages(newMessages);
             setInput('');
             try {
-                const response = await axios.post('http://0.0.0.0:5001/chat', { text: input });
-                const botMessage = response.data.response;
+                const res = await axios.post('https://insurify-backend-production.up.railway.app/chat', { text: input });
+                const botMessage = res.data.response;
                 setMessages([...newMessages, { text: botMessage, user: 'bot' }]);
             } catch (error) {
                 console.error('Error sending message', error);
