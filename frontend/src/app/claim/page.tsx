@@ -462,7 +462,7 @@ function Stage5() {
 	const [stage, setStage] = useAtom(claimStageAtom);
 	const [claimData, setClaimData] = useAtom(claimDataAtom);
 	// 0 = Not started, 1 = Processing, 2 = Done, 3 = Error
-	const [processingState, setProcessingState] = useState(2);
+	const [processingState, setProcessingState] = useState(0);
 	const hasStartedProcessing = useRef(false);
 
 	type AIResponse = {
