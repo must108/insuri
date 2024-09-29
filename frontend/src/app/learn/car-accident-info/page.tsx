@@ -1,24 +1,49 @@
-import React, { useState } from 'react';
+"use client";
+import React, { useState, useRef } from 'react';
 import Image from "next/image";
 
 export default function CarAccident() {
-        
+    const nextSectionRef = useRef<HTMLDivElement>(null);
+
+    const handleScroll = () => {
+      if (nextSectionRef.current) {
+        // Scroll to the next section
+        nextSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
     return (
     <div>
-        <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
-            <div className="gap-10">
-            <p className="text-5xl font-bold text-center">
-                What to Do After a Car Accident: Simple Steps
-            </p>
-            <p className="text-xl text-center">
-                If you need to save some money, we have you covered.
-            </p>
+        <div className="flex flex-col items-center justify-between p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
+            <div className="gap-10 flex-grow flex flex-col items-center justify-center">
+                <p className="text-5xl font-bold text-center">
+                    What to Do After a Car Accident: Simple Steps
+                </p>
+                <p className="text-xl text-center">
+                    If you need to save some money, we have you covered.
+                </p>
+                
+                <Image src="/logo.svg" alt="Logo" width={120} height={120} />
             </div>
 
-            <Image src="/logo.svg" alt="Logo" width={120} height={120} />
+            
+
+            <div className="main__action mt-auto">
+                <a className="main__scroll atype" href="#">
+                <div className="main__scroll-box animate-bounce" onClick={handleScroll}>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M11.9997 13.1716L7.04996     8.22186L5.63574 9.63607L11.9997 16L18.3637 9.63607L16.9495 8.22186L11.9997 13.1716Z" fill="rgba(28,28,30,1)">
+                    </path>
+                </svg>
+                </div>
+
+                <span className="main__scroll-text">Scroll</span>
+                </a>
+            </div>
         </div>  
         
-        <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">    
+        <div ref={nextSectionRef} className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">    
             <ol className="list-decimal ml-4 space-y-4">
                 <li>
                 <span className="font-bold">Stay Calm and Check for Injuries:</span>
