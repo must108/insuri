@@ -39,21 +39,21 @@ const team = [
 		name: "Mustaaen Ahmed",
 		role: "Lead ML Engineer",
 		linkedin: "https://www.linkedin.com/in/mustaeenahmed/",
-		github: "",
+		github: "https://github.com/must108",
 		image: "/team/mustaaen.jpeg"
 	},
 	{
 		name: "Lucca Carvalho Assuncao",
 		role: "Frontend Developer",
 		linkedin: "https://www.linkedin.com/in/luccaassuncao/",
-		github: "",
+		github: "https://github.com/luccaassuncao1",
 		image: "/team/lucca.png"
 	},
 	{
 		name: "Derian Comas",
 		role: "Backend Developer",
 		linkedin: "https://www.linkedin.com/in/deriancomas/",
-		github: "",
+		github: "https://github.com/dcomas1",
 		image: "/team/derian.jpeg"
 	}
 ]

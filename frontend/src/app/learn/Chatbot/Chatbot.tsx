@@ -1,24 +1,20 @@
 "use client";
 import React, { useState } from 'react';
 import axios from 'axios'
-// import './src/app/globals.css'
-
+import './Chatbot.css'
 type Message= {
     text: string;
     user: 'me' | 'bot';
 }
-
 const Chatbot = () => {
     const[messages, setMessages] = useState<Message[]>([]);
     const[input, setInput] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-
     const handleSend = async () => {
         if (input.trim()){
             const newMessages: Message[] = [...messages, {text: input, user: 'me'}]
             setMessages(newMessages);
             setInput('');
-
             try {
                 const response = await axios.post('http://0.0.0.0:5001/chat',{text:input});
                 const botMessage = response.data.response;
@@ -62,5 +58,4 @@ const Chatbot = () => {
         </div>
     );
 };
-
 export default Chatbot;
