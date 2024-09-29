@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BeginnerButton from '../components/Buttons/BeginnerButton';
 import CarAccidentInfoButton from '../components/Buttons/CarAccidentButton';
 import LowerInsuranceButton from '../components/Buttons/LowerInsuranceButton';
-import Chatbot from "./Chatbot/Chatbot";
+import Chatbot from "../components/Chatbot/Chatbot";
 import Image from "next/image"
 
 export default function LearnPage() {

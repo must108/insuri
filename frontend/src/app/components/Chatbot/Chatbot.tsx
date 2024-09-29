@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import axios from 'axios'
-import './Chatbot.css'
+// import './src/app/globals.css'
 
 type Message= {
     text: string;
