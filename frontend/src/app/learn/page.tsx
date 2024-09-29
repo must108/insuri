@@ -70,9 +70,9 @@ export default function LearnPage() {
         ))}
       </BentoGrid>
 
-      <div className="flex w-fit items-center justify-center gap-4 btn-primary">
+      {/* <div className="flex w-fit items-center justify-center gap-4 btn-primary">
         <Chatbot />
-      </div>
+      </div> */}
 
     </div>
   )

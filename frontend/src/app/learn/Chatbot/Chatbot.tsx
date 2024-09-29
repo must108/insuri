@@ -16,6 +16,7 @@ const Chatbot = () => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const handleSend = async () => {
+        console.log(messages);
         if (input.trim()) {
             const newMessages: Message[] = [...messages, { text: input, user: 'me' }];
             setMessages(newMessages);
@@ -23,10 +24,10 @@ const Chatbot = () => {
             try {
                 const res = await axios.post('http://127.0.0.1:5001/chat', { text: input });
                 const botMessage = res.data.response;
-                setMessages([...newMessages, { text: botMessage, user: 'bot' }]);
+                setMessages((prevMessages) => [...prevMessages, { text: botMessage, user: "bot" }])
             } catch (error) {
                 console.error('Error sending message', error);
-                setMessages([...newMessages, { text: 'Error: Could not send message', user: 'bot' }]);
+                setMessages((prevMessages) => [...prevMessages, { text: "Error: could not send message", user: "bot" }])
             }
         }
     };
