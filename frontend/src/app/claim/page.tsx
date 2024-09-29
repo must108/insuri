@@ -498,9 +498,12 @@ function Stage5() {
 			formData.append('deductible', claimData.deductible.toString());
 			formData.append('premium', claimData.premium.toString());
 			formData.append('claims', '0');
+			formData.append("police", claimData.policeReport.toString());
+			formData.append("injured", claimData.injured.toString());
+
 
 			// Upload images
-			claimData.files.forEach((file, index) => {
+			claimData.files.forEach((file, _) => {
 				formData.append("files", file);
 			});
 

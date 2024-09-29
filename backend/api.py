@@ -67,7 +67,7 @@ def upload_file():
         print(fi.filename)   
         if allowed_file(fi.filename):
             the_file = fi.read()
-            image = Image.open(io.BytesIO(the_file))
+            image = Image.open(io.BytesIO(the_file)).convert("RGB")
             base64_image = base64.b64encode(the_file).decode("utf-8")
 
             inputs = processor(images=image, return_tensors="pt")
@@ -180,6 +180,7 @@ def upload_file():
                             "monthly_premium_increase": a,
                             }
                         DO NOT RETURN ANYTHING ELSE! Just JSON data, and not in a code box. just plain JSON text
+                        Remember to include deductible and premium amount.
                     """
                 }
             ]
@@ -201,7 +202,7 @@ def upload_file():
     res_obj = {
         "claim_amount": 0,
         "deductible_amount": 0,
-        "monthly_premium_amount": 0,
+        "monthly_premium_increase": 0,
         "repair_cost": 0,
     }
         
@@ -210,7 +211,7 @@ def upload_file():
             res_obj[key] += result.get(key, 0)
 
     for key in res_obj:
-        res_obj[key] = round(res_obj[key] / length_results, -1)
+        res_obj[key] /= length_results
 
     return jsonify(res_obj)
 
