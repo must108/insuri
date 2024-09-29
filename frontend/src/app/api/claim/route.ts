@@ -100,3 +100,24 @@ export async function POST(request: NextRequest) {
     });
   }
 }
+
+export async function GET(request: NextRequest) {
+  const user = await currentUser();
+
+  if (!user) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
+  const claims = await db.claim.findMany({
+    where: {
+      userId: user.id,
+    },
+    include: {
+      statusTimeline: true,
+    },
+  });
+
+  return NextResponse.json({
+    data: claims,
+  });
+}

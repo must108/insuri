@@ -30,7 +30,7 @@ function LinkButton({ link, label }: { link: string, label: string }) {
 export default function Navbar() {
 	return <>
 		<div className="fixed w-full h-16 bg-[--background] flex">
-			<div className="flex flex-row flex-1 max-w-5xl mx-auto p-2\4 justify-evenly items-center">
+			<div className="flex flex-row flex-1 max-w-5xl mx-auto p-2\4 justify-between px-4 sm:px-8 md:px-16 items-center">
 				<Link href="/">
 					<Image src="/logo.svg" alt="Logo" width={80} height={80} />
 				</Link>
