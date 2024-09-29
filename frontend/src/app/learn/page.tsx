@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BeginnerButton from '../components/Buttons/BeginnerButton';
 import CarAccidentInfoButton from '../components/Buttons/CarAccidentButton';
 import LowerInsuranceButton from '../components/Buttons/LowerInsuranceButton';
