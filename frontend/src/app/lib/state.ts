@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
-export const claimStageAtom = atom<1 | 2 | 3 | 4>(1);
+export const claimStageAtom = atom<1 | 2 | 3 | 4 | 5>(1);
 
 interface ClaimData {
   otherParty: boolean;
@@ -18,11 +18,18 @@ interface ClaimData {
   carYear: number;
   carMileage: number;
 
+  // User data
+  age: number;
+  gender: string;
+  address: string;
+  deductible: number;
+  premium: number;
+
   // Crash image files
   files: File[];
 }
 
-export const claimDataAtom = atomWithStorage<ClaimData>("insurify-claim-data", {
+export const claimDataAtom = atom<ClaimData>({
   otherParty: false,
   otherPartyDescription: "",
   injured: false,
@@ -36,6 +43,13 @@ export const claimDataAtom = atomWithStorage<ClaimData>("insurify-claim-data", {
   carModel: "",
   carYear: 0,
   carMileage: 0,
+
+  // User data
+  age: 0,
+  gender: "",
+  address: "",
+  deductible: 0,
+  premium: 0,
 
   // Crash image files
   files: [],
