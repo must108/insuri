@@ -20,7 +20,7 @@ export default function BeginnerGuide() {
               Car Insurance 101: A Beginner's Guide
             </p>
             <p className="text-xl text-center">
-              Your first stop shop for all things Insurance.
+              Your first stop shop for all things car Insurance.
             </p>
             
             <Image src="/logo.svg" alt="Logo" width={120} height={120} />

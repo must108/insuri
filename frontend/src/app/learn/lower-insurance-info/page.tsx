@@ -43,8 +43,8 @@ export default function LowerInsurance() {
 
         
 
-        <div ref={nextSectionRef} className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">     
-          <ol className="list-decimal ml-4 space-y-4">
+        <div ref={nextSectionRef} className="min-h-screen flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">     
+          <ol className="list-decimal ml-4 space-y-4 mt-[4rem]">
             <li>
               <span className="font-bold">Shop Around</span>
               <p>Compare quotes from different companies to find the best rate.</p>

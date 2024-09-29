@@ -4,23 +4,6 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
-const DotIcon = () => {
-	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
-			<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" />
-		</svg>
-	)
-}
-
-const CustomPage = () => {
-	return (
-		<div>
-			<h1>Custom Profile Page</h1>
-			<p>This is the custom profile page</p>
-		</div>
-	)
-}
-
 function LinkButton({ link, label }: { link: string, label: string }) {
 	return <Link href={link}>
 		<p className="hover:opacity-60 text-xs sm:text-sm ">{label}</p>
@@ -36,7 +19,7 @@ export default function Navbar() {
 				</Link>
 
 				<div className="flex flex-row gap-4 items-center">
-					<LinkButton link="/learn" label="Learn" icon="mdi:book-open" />
+					<LinkButton link="/learn" label="Learn" />
 					<LinkButton link="/terms" label="Terms" />
 					<LinkButton link="/my-claims" label="My Claims" />
 					<LinkButton link="/about" label="About" />
@@ -49,21 +32,10 @@ export default function Navbar() {
 					<SignedIn>
 						<div className="block ml-8">
 							<UserButton>
-								<UserButton.UserProfilePage label="Custom Page" url="custom" labelIcon={<DotIcon />}>
-									<CustomPage />
-								</UserButton.UserProfilePage>
-								<UserButton.UserProfileLink label="Homepage" url="/" labelIcon={<DotIcon />} />
 								<UserButton.UserProfilePage label="account" />
 								<UserButton.UserProfilePage label="security" />
-
 								<UserButton.MenuItems>
 									<UserButton.Action label="signOut" />
-									<UserButton.Link
-										label="Create organization"
-										labelIcon={<DotIcon />}
-										href="/create-organization"
-										// Hide if screen is smaller than md
-									/>
 									<UserButton.Action label="manageAccount" />
 								</UserButton.MenuItems>
 							</UserButton>
