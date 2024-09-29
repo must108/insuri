@@ -1,44 +1,51 @@
 import React, { useState } from 'react';
+import Image from "next/image";
 
 export default function CarAccident() {
         
     return (
-    <div className="flex flex-col justify-center items-center min-h-screen mt-16 w-1/2 mx-auto">
-        <h2>
-            What to Do After a Car Accident: Simple Steps
-        </h2>
-        <p>
-            1. Stay Calm and Check for Injuries <br />
-            -Take a moment to breathe.<br />
-            -Check yourself and others for any injuries carefully.<br />
-            -If anyone is hurt, call 911 right away.<br />
-            2. Move to Safety<br />
-            -If your car is drivable, move it to the side of the road.<br />
-            -Turn on your hazard lights to alert other drivers.<br />
-            -If you can’t move the car, and you are in a relatively safe zone stay inside with your seatbelt on. If not, exit the car. <br />
-            3. Call for Help<br />
-            -Call 911 to report the accident, even if it's minor.<br />
-            -File a report with the police, which is useful for insurance.<br />
-            4. Exchange Info <br />
-            -Get the other driver’s information:<br />
-                -Name<br />
-                -Phone number<br />
-                -Insurance info<br />
-            -If there are witnesses, ask for their contact info.<br />
-            5. Take Photos<br />
-                -Use your phone to snap pictures of the car plates, any damage to the cars, and the surrounding area.<br />
-                -If there are witnesses, ask for their contact info.<br />
-            6. Don’t Admit Fault<br />
-            -Be polite, but avoid saying things like “I’m sorry” that could be taken as admitting fault.<br />
-            7. Call Your Insurance<br />
-            -Report the accident to your insurance company as soon as you can.<br />
-            8. Get Medical Attention<br />
-            -Even if you feel fine, get checked out by a doctor. Some injuries might not show up right away.<br />
-            9. Keep Records<br />
-            -Save everything related to the accident: police reports, medical bills, repair estimates, etc.<br />
-            10. Consider Legal Help<br />
-            -If there are any disputes or serious injuries, think about talking to a lawyer to protect yourself.<br />
-        </p>
+    <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto mt-32">
+        <div>
+            <div className="gap-10">
+            <p className="text-5xl font-bold text-center">
+                What to Do After a Car Accident: Simple Steps
+            </p>
+            <p className="text-xl text-center">
+                If you need to save some money, we have you covered.
+            </p>
+            </div>
+
+            <Image src="/logo.svg" alt="Logo" width={120} height={120} />
+        </div>  
+        
+        <div className='w-128 text-left'>    
+            <p>
+                1. Stay Calm and Check for Injuries:<br />
+                a- Breathe.<br />
+                b- Check for injuries.<br />
+                c- Call 911 if needed.<br />
+                2. Move to Safety:<br />
+                a- Turn on hazard lights.<br />
+                b- If possible, move the car to a safe spot<br />
+                3. Call for Help:<br />
+                a- Report the accident to 911. <br />
+                b- File a police report.<br />
+                4. Exchange Info: <br />
+                a- Get the other driver’s name, number, and insurance details.<br />
+                5. Take Photos: <br />
+                a- Capture pictures of the cars, damage, and the scene.<br />
+                6. Don’t Admit Fault: <br />
+                a- Avoid saying anything that could imply fault.<br />
+                7. Call Your Insurance: <br />
+                a- Report the accident to your insurer right away.<br />
+                8. Get Medical Attention:<br />
+                a- See a doctor even if you feel fine.<br />
+                9. Keep Records: <br />
+                a- Save all documents like reports, bills, and repair estimates.<br />
+                10. Consider Legal Help: <br />
+                a- Consult a lawyer if there are disputes or injuries.<br />
+            </p>
+        </div>  
     </div>
     )
 }
