@@ -45,7 +45,7 @@ def upload_file():
     deductible = request.form.get("deductible")
     premium = request.form.get("premium")
     past_claims = request.form.get("claims")
-    police_report = request.form.get("police")
+    police_report = request.form.get("policeReport")
     injured = request.form.get("injured")
     print("files:", request.files)
 
@@ -210,7 +210,7 @@ def upload_file():
             res_obj[key] += result.get(key, 0)
 
     for key in res_obj:
-        res_obj[key] = round(res_obj[key] / length_results, -1)
+        res_obj[key] = round(res_obj[key] / length_results, -3)
 
     return jsonify(res_obj)
 
