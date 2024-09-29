@@ -503,7 +503,7 @@ function Stage5() {
 
 
 			// Upload images
-			claimData.files.forEach((file, index) => {
+			claimData.files.forEach((file, _) => {
 				formData.append("files", file);
 			});
 
