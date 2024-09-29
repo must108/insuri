@@ -47,8 +47,8 @@ export default function LearnPage() {
 
   return (
     <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
-      <div className="gap-10">
-        <p className="text-5xl font-bold text-center">
+      <div className="gap-10 md:mt-16">
+        <p className="text-3xl md:text-5xl font-bold text-center">
           Own Your Insurance Decisions
         </p>
         <p className="text-xl text-center">

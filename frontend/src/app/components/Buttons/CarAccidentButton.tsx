@@ -6,7 +6,7 @@ export default function CarAccidentInfoButton({ small }: { small?: boolean }) {
 			<div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r " style={{ backgroundColor: 'var(--red-light)' }}>
 			</div>
 			<div className="p-6">
-				<h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+				<h5 className="mb-2 block font-sans text-xl md:text-5xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
 				Car Accident Guide
 				</h5>
 				<p className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
