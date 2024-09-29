@@ -1,50 +1,88 @@
 import React, { useState } from 'react';
+import Image from "next/image";
 
 export default function LowerInsurance() {
         
     return (
-    <div className="flex flex-col justify-center items-center min-h-screen mt-16 w-1/2 mx-auto">
-        <h2>
-            How to Lower Your Car Insurance Premium: A Simple Guide
-        </h2>
-        <p>
-            1. Shop Around for the Best Rate<br />
-            -Insurance companies charge different prices for the same coverage. Get quotes from multiple companies and compare the rates. You can do this online or through an insurance broker.<br />
-            2. Raise Your Deductible<br />
-            -Your deductible is the amount you pay out-of-pocket before the insurance kicks in. If you choose a higher deductible, your premium will likely go down. Just make sure you can afford to pay that deductible if something happens.<br />
-            3. Ask About Discounts<br />
-            -Many insurance companies offer discounts for:<br />
-                -Safe drivers with no accidents or traffic violations.<br />
-                -Students with good grades.<br />
-                -Cars with safety features like anti-lock brakes or anti-theft systems.<br />
-                -Bundling multiple policies (e.g., car and home insurance) with the same company.<br />
-                -Taking a defensive driving course.<br />
-                -Don’t be afraid to ask your insurer about any available discounts you might qualify for.<br />
-            4. Drive Less<br />
-            -If you drive fewer miles each year, some insurance companies will give you a lower rate because you’re less likely to be involved in an accident. Consider signing up for a pay-per-mile policy if you don’t drive often.<br />
-            5. Maintain a Good Credit Score<br />
-            -In many states, your credit score can affect your insurance premium. A higher credit score usually means a lower premium, so paying your bills on time and reducing debt can help.<br />
-            6. Keep a Clean Driving Record<br />
-            -Avoid speeding tickets, accidents, or other violations. Safe drivers typically get lower insurance rates, and some companies offer accident forgiveness programs that protect your premium if you have a minor incident.<br />
-            7. Consider the Type of Car You Drive<br />
-            -Cars that are expensive to repair, high-performance, or often targeted for theft tend to have higher insurance rates. When buying a car, check the insurance cost before you make a decision. Generally, safer, more affordable cars cost less to insure.<br />
-            8. Reduce Unnecessary Coverage<br />
-            -Review your policy to see if you’re paying for coverage you don’t need. For example:<br />
-            -If your car is older and not worth much, you might drop collision or comprehensive coverage.<br />
-            -If you already have good health insurance, you might reduce personal injury protection (PIP) coverage.<br />
-            -Make sure you still meet the minimum coverage requirements in your state before cutting coverage.<br />
-            9. Improve Your Car's Safety Features<br />
-            -Some insurance companies offer discounts for vehicles with safety or anti-theft features. Installing things like:<br />
-            -Airbags, anti-lock brakes, or electronic stability control.<br />
-            -Car alarms or tracking devices.<br />
-            -These features can make your car safer and potentially lower your insurance premium.<br />
-            10. Bundle Your Insurance Policies<br />
-            -If you have other types of insurance (like homeowners or renters insurance), consider bundling them with the same company. Many insurers offer a discount when you have multiple policies with them.<br />
-            11. Pay Your Premium Annually<br />
-            -Some insurance companies charge extra fees for monthly payments. If you can afford it, paying your premium in full for the year can save you money over time.<br />
-            12. Review Your Policy Regularly<br />
-            -Every year, review your car insurance policy to see if you still need the same level of coverage. If your car’s value has gone down, or if your driving habits have changed, you might be able to lower your costs.<br />
-        </p>
+    <div >
+        <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
+          <div className="gap-10">
+            <p className="text-5xl font-bold text-center">
+              How to Lower Your Car Insurance Premium
+            </p>
+            <p className="text-xl text-center">
+              If you need to save some money, we have you covered.
+            </p>
+          </div>
+          
+          <Image src="/logo.svg" alt="Logo" width={120} height={120} />
+        </div>
+
+        
+
+        <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">     
+          <ol className="list-decimal ml-4 space-y-4">
+            <li>
+              <span className="font-bold">Shop Around</span>
+              <p>Compare quotes from different companies to find the best rate.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Raise Your Deductible</span>
+              <p>A higher deductible can lower your premium but ensure you can afford it.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Ask About Discounts</span>
+              <p>Look for discounts for safe driving, good grades, safety features, or bundling policies.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Drive Less</span>
+              <p>Fewer miles driven can reduce your premium or consider a pay-per-mile policy.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Maintain Good Credit</span>
+              <p>A better credit score can lead to lower premiums.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Keep a Clean Driving Record</span>
+              <p>Avoid accidents and tickets to get better rates.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Choose the Right Car</span>
+              <p>Safer, affordable cars typically have lower insurance costs.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Cut Unnecessary Coverage</span>
+              <p>Drop coverage you don’t need, but ensure you meet state requirements.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Improve Safety Features</span>
+              <p>Install anti-theft devices and safety features to lower your premium.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Bundle Policies</span>
+              <p>Combine home and auto insurance for a discount.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Pay Annually</span>
+              <p>Paying your premium yearly can save on monthly fees.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Review Regularly</span>
+              <p>Reassess your policy yearly to adjust coverage and potentially lower costs.</p>
+            </li>
+          </ol>
+        </div>
     </div>
     )
 }

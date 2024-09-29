@@ -11,28 +11,57 @@ datasource db {
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model User {
-  id                BigInt   @id @default(autoincrement())
-  fullname          String?
-  created_at        DateTime @default(now()) @db.Timestamptz(6)
-  email             String?
-  phone_num         String?
-  address           String?
-  age               BigInt?
-  gender            String?
-  insurance_company String?
-  premium_cost      String?
-  deductible        BigInt?
+  id String @unique()
+
+  email   String?
+  address String?
+  age     Int?
+  gender  String?
 
   claims Claim[] @relation("userClaims")
 }
 
+model ClaimStatus {
+  id String @unique()
+
+  claimID String
+  claim   Claim  @relation("claimStatus", fields: [claimID], references: [id])
+
+  title       String
+  description String
+  date        DateTime @default(now())
+}
+
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model Claim {
-  id          BigInt  @id @default(autoincrement())
-  userId      String
-  user        User    @relation("userClaims", fields: [id], references: [id])
-  car_make    String?
-  car_model   String?
-  car_year    String?
-  car_mileage String?
+  id       String   @unique() @default(uuid())
+  filed_at DateTime @default(now())
+
+  statusTimeline ClaimStatus[] @relation("claimStatus")
+
+  userId String
+  user   User   @relation("userClaims", fields: [userId], references: [id])
+
+  insurance_company String?
+  premium_cost      Float
+  deductible        Float?
+
+  car_make    String
+  car_model   String
+  car_year    Int
+  car_mileage Int
+
+  // AI Response
+  claim_amount Float
+  deductible_amount Float
+  monthly_premium_increase Float
+  repair_cost Float
+
+  // Rest of form data
+  otherParty            Boolean
+  otherPartyDescription String?
+  injured               Boolean
+  injuredDescription    String?
+  policeReport          Boolean
+  otherComments         String?
 }

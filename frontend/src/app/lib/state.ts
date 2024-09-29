@@ -29,7 +29,7 @@ interface ClaimData {
   files: File[];
 }
 
-export const claimDataAtom = atomWithStorage<ClaimData>("insurify-claim-data", {
+export const claimDataAtom = atom<ClaimData>({
   otherParty: false,
   otherPartyDescription: "",
   injured: false,

@@ -1,44 +1,100 @@
 import React, { useState } from 'react';
+import Image from "next/image";
 
 export default function CarAccident() {
         
     return (
-    <div className="flex flex-col justify-center items-center min-h-screen mt-16 w-1/2 mx-auto">
-        <h2>
-            What to Do After a Car Accident: Simple Steps
-        </h2>
-        <p>
-            1. Stay Calm and Check for Injuries <br />
-            -Take a moment to breathe.<br />
-            -Check yourself and others for any injuries carefully.<br />
-            -If anyone is hurt, call 911 right away.<br />
-            2. Move to Safety<br />
-            -If your car is drivable, move it to the side of the road.<br />
-            -Turn on your hazard lights to alert other drivers.<br />
-            -If you can’t move the car, and you are in a relatively safe zone stay inside with your seatbelt on. If not, exit the car. <br />
-            3. Call for Help<br />
-            -Call 911 to report the accident, even if it's minor.<br />
-            -File a report with the police, which is useful for insurance.<br />
-            4. Exchange Info <br />
-            -Get the other driver’s information:<br />
-                -Name<br />
-                -Phone number<br />
-                -Insurance info<br />
-            -If there are witnesses, ask for their contact info.<br />
-            5. Take Photos<br />
-                -Use your phone to snap pictures of the car plates, any damage to the cars, and the surrounding area.<br />
-                -If there are witnesses, ask for their contact info.<br />
-            6. Don’t Admit Fault<br />
-            -Be polite, but avoid saying things like “I’m sorry” that could be taken as admitting fault.<br />
-            7. Call Your Insurance<br />
-            -Report the accident to your insurance company as soon as you can.<br />
-            8. Get Medical Attention<br />
-            -Even if you feel fine, get checked out by a doctor. Some injuries might not show up right away.<br />
-            9. Keep Records<br />
-            -Save everything related to the accident: police reports, medical bills, repair estimates, etc.<br />
-            10. Consider Legal Help<br />
-            -If there are any disputes or serious injuries, think about talking to a lawyer to protect yourself.<br />
-        </p>
+    <div>
+        <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
+            <div className="gap-10">
+            <p className="text-5xl font-bold text-center">
+                What to Do After a Car Accident: Simple Steps
+            </p>
+            <p className="text-xl text-center">
+                If you need to save some money, we have you covered.
+            </p>
+            </div>
+
+            <Image src="/logo.svg" alt="Logo" width={120} height={120} />
+        </div>  
+        
+        <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">    
+            <ol className="list-decimal ml-4 space-y-4">
+                <li>
+                <span className="font-bold">Stay Calm and Check for Injuries:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Breathe.</li>
+                        <li>Check for injuries.</li>
+                        <li>Call 911 if needed.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Move to Safety:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Turn on hazard lights.</li>
+                        <li>If possible, move the car to a safe spot.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Call for Help:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Report the accident to 911.</li>
+                        <li>File a police report.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Exchange Info:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Get the other driver’s name, number, and insurance details.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Take Photos:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Capture pictures of the cars, damage, and the scene.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Don’t Admit Fault:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Avoid saying anything that could imply fault.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Call Your Insurance:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Report the accident to your insurer right away.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Get Medical Attention:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>See a doctor even if you feel fine.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Keep Records:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Save all documents like reports, bills, and repair estimates.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Consider Legal Help:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Consult a lawyer if there are disputes or injuries.</li>
+                    </ol>
+                </li>
+            </ol>
+        </div>  
     </div>
     )
 }
