@@ -30,10 +30,6 @@ export default function Home() {
         <Image src="/logo.svg" alt="Logo" width={120} height={120} />
 
       </div>
-
-      <div className="bg-secondary flex flex-col items-center justify-center p-8 pb-20 gap-16 sm:p-20 min-h-screen">
-        
-      </div>
     </div>
 
   );
