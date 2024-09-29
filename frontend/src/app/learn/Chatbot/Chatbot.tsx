@@ -30,6 +30,12 @@ const Chatbot = () => {
             }
         }
     };
+    
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            handleSend();
+        }
+    };
 
     useEffect(() => {
         if (messagesEndRef.current) {
@@ -67,6 +73,7 @@ const Chatbot = () => {
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={handleKeyDown}  
                                 placeholder="Type a message..."
                                 className="input input-bordered w-full"
                             />
