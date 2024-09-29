@@ -18,9 +18,9 @@ const Skeleton = () => (
 
 const items = [
   {
-    title: "Insurance 101",
+    title: "Car Insurance 101: A College Student's Guide",
     description: "Car insurance made easy for college beginners.",
-    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
+    header: <Image src="https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-2",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
     link: "/learn/beginner-guide"
@@ -28,7 +28,7 @@ const items = [
   {
     title: "Lower Your Insurance",
     description: "On a tight budget? We can have got your back covered.",
-    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
+    header: <Image src="https://images.pexels.com/photos/620335/pexels-photo-620335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
     link: "/learn/lower-insurance-info"
@@ -36,7 +36,7 @@ const items = [
   {
     title: "Car Accident Guide",
     description: "Had a car accident? We’ll guide you through no problem. ",
-    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
+    header: <Image src="https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-3",
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
     link: "/learn/car-accident-info"

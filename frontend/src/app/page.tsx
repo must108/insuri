@@ -18,8 +18,7 @@ export default function Home() {
             Simplified Auto Insurance Claims
           </p>
           <p className="text-lg md:text-xl text-center">
-            Streamline your auto insurance claims and master your insurance journey with our easy-to-use platform. Trust us to help you get back on the road faster.
-          </p>
+          Streamline your auto insurance claims and master your insurance journey with our AI-powered, easy-to-use platform. Trust us to help you get back on the road faster.          </p>
         </div>
 
         <div className="flex w-fit flex-wrap items-center justify-center gap-4 btn-primary">

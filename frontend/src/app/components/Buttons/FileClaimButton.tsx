@@ -9,7 +9,7 @@ export default function FileClaimButton({ small }: { small?: boolean }) {
  
 	return (<Link href="/claim" onClick={() => setStage(1)}>
 		<button className={"btn btn-wide " + (small ? 'w-[12rem]' : '')}>
-			Claim Estimate
+			AI Claim Estimate
 		</button>
 	</Link>);
 }
