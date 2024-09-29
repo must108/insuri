@@ -47,7 +47,7 @@ export default function Navbar() {
 						<SignInButton />
 					</SignedOut>
 					<SignedIn>
-						<div className="block">
+						<div className="block ml-8">
 							<UserButton>
 								<UserButton.UserProfilePage label="Custom Page" url="custom" labelIcon={<DotIcon />}>
 									<CustomPage />
