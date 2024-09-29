@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function TeamCard({ name, role, linkedin, github, image }: { name: string, role: string, linkedin: string, github: string, image: string }) {
+function TeamCard({ name, role, linkedin, github, image }: { name: string, role: string, linkedin: string, github: string, image: string }) {
     return (
         <div className='flex flex-col gap-2 w-[16rem] p-4 shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset] transition-shadow duration-300 hover:shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_8px_12px_-2px,_rgba(255,_255,_255,_0.1)_0px_2px_1px_inset]'>
             <Image src={image} alt={name} width={180} height={180} className="object-cover rounded-full aspect-square w-full p-4" />
