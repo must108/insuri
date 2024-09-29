@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BeginnerButton from '../components/Buttons/BeginnerButton';
 import CarAccidentInfoButton from '../components/Buttons/CarAccidentButton';
 import LowerInsuranceButton from '../components/Buttons/LowerInsuranceButton';
+import Chatbot from "./Chatbot/Chatbot";
 
 export default function LearnPage() {
         
@@ -10,6 +11,7 @@ export default function LearnPage() {
         <BeginnerButton />
         <CarAccidentInfoButton />
         <LowerInsuranceButton />
+        <Chatbot />
     </div>
     )
 }
