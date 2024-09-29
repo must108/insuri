@@ -1,2 +1,2 @@
-# insuri
+# insurify
 coming soon
