@@ -4,19 +4,21 @@ import Image from "next/image";
 export default function BeginnerGuide() {
         
     return (
-    <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto mt-32">
-        <div className="gap-10">
-          <p className="text-5xl font-bold text-center">
-            Car Insurance 101: A Beginner's Guide
-          </p>
-          <p className="text-xl text-center">
-            Your first stop shop for all things Insurance.
-          </p>
+    <div>
+        <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
+          <div className="gap-10">
+            <p className="text-5xl font-bold text-center">
+              Car Insurance 101: A Beginner's Guide
+            </p>
+            <p className="text-xl text-center">
+              Your first stop shop for all things Insurance.
+            </p>
+          </div>
+        
+          <Image src="/logo.svg" alt="Logo" width={120} height={120} />
         </div>
 
-        <Image src="/logo.svg" alt="Logo" width={120} height={120} />
-
-        <div className='w-128 text-left'> 
+        <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">  
         <p>
             1. What is Car Insurance? <br />
             Car insurance is an agreement where you pay a premium, and the insurance company helps cover costs if your car is damaged, stolen, or you're in an accident.<br />

@@ -4,8 +4,8 @@ import Image from "next/image";
 export default function CarAccident() {
         
     return (
-    <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto mt-32">
-        <div>
+    <div>
+        <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
             <div className="gap-10">
             <p className="text-5xl font-bold text-center">
                 What to Do After a Car Accident: Simple Steps
@@ -18,7 +18,7 @@ export default function CarAccident() {
             <Image src="/logo.svg" alt="Logo" width={120} height={120} />
         </div>  
         
-        <div className='w-128 text-left'>    
+        <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">    
             <p>
                 1. Stay Calm and Check for Injuries:<br />
                 a- Breathe.<br />
