@@ -580,7 +580,8 @@ function Stage5() {
 					</div>
 
 					<div className='flex justify-end'>
-						<Link href='/my-claims'><button className='btn btn-link'>View All Claims</button></Link>
+						<Link href={`/my-claims/${dbresponse?.data?.id}`}><button className='btn btn-link'>View Claim</button></Link>
+						<Link href='/my-claims'><button className='btn btn-primary'>View All Claims</button></Link>
 					</div>
 				</>
 			)
