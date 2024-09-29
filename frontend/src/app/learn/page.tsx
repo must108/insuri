@@ -18,28 +18,28 @@ const Skeleton = () => (
 
 const items = [
   {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
+    title: "Insurance 101",
+    description: "Car insurance made easy for college beginners.",
+    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-2",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
-    link: "/learn/beginner"
+    link: "/learn/beginner-guide"
   },
   {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
+    title: "Lower Your Insurance",
+    description: "On a tight budget? We can have got your back covered.",
+    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-    link: "/learn/car-accident"
+    link: "/learn/lower-insurance-info"
   },
   {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
+    title: "Car Accident Guide",
+    description: "Had a car accident? We’ll guide you through no problem. ",
+    header: <Image src="/team/noah.jpeg" alt="Innovation" width={300} height={200} className='aspect-video object-cover rounded-lg w-full' />,
     className: "md:col-span-3",
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
-    link: "/learn/lower-insurance"
+    link: "/learn/car-accident-info"
   },
 ];
 
@@ -47,8 +47,8 @@ export default function LearnPage() {
 
   return (
     <div className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20 min-h-screen max-w-5xl mx-auto">
-      <div className="gap-10">
-        <p className="text-5xl font-bold text-center">
+      <div className="gap-10 md:mt-16">
+        <p className="text-3xl md:text-5xl font-bold text-center">
           Own Your Insurance Decisions
         </p>
         <p className="text-xl text-center">
