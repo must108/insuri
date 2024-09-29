@@ -25,7 +25,6 @@ export default function LearnPage() {
             <Chatbot />
         </div>
 
-        <Image src="/logo.svg" alt="Logo" width={120} height={120} />
     </div>
     )
 }
