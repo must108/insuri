@@ -583,10 +583,19 @@ function Stage5() {
 				processingState === 3 && (
 					<>
 						<p>There was an error processing your claim. Please try again.</p>
+						<div>
 						<button onClick={() => {
 							setProcessingState(0);
 							hasStartedProcessing.current = false;
 						}}>Try again</button>
+
+						<button onClick={() => {
+							setStage(1);
+							setProcessingState(0);
+							hasStartedProcessing.current = false;
+						}}>Restart Claim</button>
+						</div>
+						
 					</>
 				)
 			}
