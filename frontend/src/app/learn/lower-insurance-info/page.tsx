@@ -21,32 +21,67 @@ export default function LowerInsurance() {
         
 
         <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">     
-          <p>
-              1. Shop Around<br />
-              Compare quotes from different companies to find the best rate.<br />
-              2. Raise Your Deductible<br />
-              A higher deductible can lower your premium but ensure you can afford it.<br />
-              3. Ask About Discounts<br />
-              Look for discounts for safe driving, good grades, safety features, or bundling policies.<br />
-              4. Drive Less<br />
-              Fewer miles driven can reduce your premium or consider a pay-per-mile policy.<br />
-              5. Maintain Good Credit<br />
-              A better credit score can lead to lower premiums.<br />
-              6. Keep a Clean Driving Record<br />
-              Avoid accidents and tickets to get better rates.<br />
-              7. Choose the Right Car<br />
-              Safer, affordable cars typically have lower insurance costs.<br />
-              8. Cut Unnecessary Coverage<br />
-              Drop coverage you don’t need, but ensure you meet state requirements.<br />
-              9. Improve Safety Features<br />
-              Install anti-theft devices and safety features to lower your premium.<br />
-              10. Bundle Policies<br />
-              Combine home and auto insurance for a discount.<br />
-              11. Pay Annually<br />
-              Paying your premium yearly can save on monthly fees.<br />
-              12. Review Regularly<br />
-              Reassess your policy yearly to adjust coverage and potentially lower costs.<br />
-          </p>
+          <ol className="list-decimal ml-4 space-y-4">
+            <li>
+              <span className="font-bold">Shop Around</span>
+              <p>Compare quotes from different companies to find the best rate.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Raise Your Deductible</span>
+              <p>A higher deductible can lower your premium but ensure you can afford it.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Ask About Discounts</span>
+              <p>Look for discounts for safe driving, good grades, safety features, or bundling policies.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Drive Less</span>
+              <p>Fewer miles driven can reduce your premium or consider a pay-per-mile policy.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Maintain Good Credit</span>
+              <p>A better credit score can lead to lower premiums.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Keep a Clean Driving Record</span>
+              <p>Avoid accidents and tickets to get better rates.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Choose the Right Car</span>
+              <p>Safer, affordable cars typically have lower insurance costs.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Cut Unnecessary Coverage</span>
+              <p>Drop coverage you don’t need, but ensure you meet state requirements.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Improve Safety Features</span>
+              <p>Install anti-theft devices and safety features to lower your premium.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Bundle Policies</span>
+              <p>Combine home and auto insurance for a discount.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Pay Annually</span>
+              <p>Paying your premium yearly can save on monthly fees.</p>
+            </li>
+
+            <li>
+              <span className="font-bold">Review Regularly</span>
+              <p>Reassess your policy yearly to adjust coverage and potentially lower costs.</p>
+            </li>
+          </ol>
         </div>
     </div>
     )

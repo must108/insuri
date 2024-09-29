@@ -19,32 +19,81 @@ export default function CarAccident() {
         </div>  
         
         <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">    
-            <p>
-                1. Stay Calm and Check for Injuries:<br />
-                a- Breathe.<br />
-                b- Check for injuries.<br />
-                c- Call 911 if needed.<br />
-                2. Move to Safety:<br />
-                a- Turn on hazard lights.<br />
-                b- If possible, move the car to a safe spot<br />
-                3. Call for Help:<br />
-                a- Report the accident to 911. <br />
-                b- File a police report.<br />
-                4. Exchange Info: <br />
-                a- Get the other driver’s name, number, and insurance details.<br />
-                5. Take Photos: <br />
-                a- Capture pictures of the cars, damage, and the scene.<br />
-                6. Don’t Admit Fault: <br />
-                a- Avoid saying anything that could imply fault.<br />
-                7. Call Your Insurance: <br />
-                a- Report the accident to your insurer right away.<br />
-                8. Get Medical Attention:<br />
-                a- See a doctor even if you feel fine.<br />
-                9. Keep Records: <br />
-                a- Save all documents like reports, bills, and repair estimates.<br />
-                10. Consider Legal Help: <br />
-                a- Consult a lawyer if there are disputes or injuries.<br />
-            </p>
+            <ol className="list-decimal ml-4 space-y-4">
+                <li>
+                <span className="font-bold">Stay Calm and Check for Injuries:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Breathe.</li>
+                        <li>Check for injuries.</li>
+                        <li>Call 911 if needed.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Move to Safety:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Turn on hazard lights.</li>
+                        <li>If possible, move the car to a safe spot.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Call for Help:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Report the accident to 911.</li>
+                        <li>File a police report.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Exchange Info:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Get the other driver’s name, number, and insurance details.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Take Photos:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Capture pictures of the cars, damage, and the scene.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Don’t Admit Fault:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Avoid saying anything that could imply fault.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Call Your Insurance:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Report the accident to your insurer right away.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Get Medical Attention:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>See a doctor even if you feel fine.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Keep Records:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Save all documents like reports, bills, and repair estimates.</li>
+                    </ol>
+                </li>
+
+                <li>
+                <span className="font-bold">Consider Legal Help:</span>
+                    <ol className="list-[lower-alpha] ml-6 space-y-1">
+                        <li>Consult a lawyer if there are disputes or injuries.</li>
+                    </ol>
+                </li>
+            </ol>
         </div>  
     </div>
     )

@@ -19,34 +19,64 @@ export default function BeginnerGuide() {
         </div>
 
         <div className="flex flex-col items-start p-8 pb-20 gap-12 sm:p-20 max-w-4xl mx-auto">  
-        <p>
-            1. What is Car Insurance? <br />
-            Car insurance is an agreement where you pay a premium, and the insurance company helps cover costs if your car is damaged, stolen, or you're in an accident.<br />
-            2. Why Do I Need Car Insurance?<br />
-            It’s legally required in most states. Without it, you could face fines, penalties, or lose your license. <br />
-            3. What Does Car Insurance Cover?<br />
-            •	Liability Insurance: Covers damage/injury to others if you're at fault.<br />
-            •	Collision Coverage: Helps repair your car after an accident, no matter who's at fault.<br />
-            •	Comprehensive Coverage: Covers theft, fire, or storm damage.<br />
-            •	Personal Injury Protection (PIP): Helps with medical expenses after an accident.<br />
-            •	Uninsured/Underinsured Motorist: Protects you if the other driver doesn’t have insurance.<br />
-            4. How Does Car Insurance Work?<br />
-            You pay a regular premium to keep your insurance, when you file a claim you pay a deductible before and the insurance covers the rest.<br />
-            5. How Much Does Car Insurance Cost?<br />
-            It depends on:<br />
-            •	Your age and driving history.<br />
-            •	The car you drive.<br />
-            •	Your coverage choices.<br />
-            •	Where you live.<br />
-            6. How Do I Choose the Right Coverage?<br />
-            First meet your state’s minimum requirements, in addition consider factors like your car’s value, budget, and driving habits.<br />
-            7. How Do I Buy Car Insurance?<br />
-            Through insurance agents or online directly from insurance companies.<br />
-            8. What Should I Do After I Buy Insurance?<br />
-            Carry your proof of insurance in your car and review your policy to understand what’s covered.<br />
-            9. What Happens if I Get in an Accident?<br />
-            You pay a deductible and your premium increases.<br />
-        </p>
+        <ol className="list-decimal ml-4 space-y-4">
+        <li>
+          <span className="font-bold">What is Car Insurance?</span>
+          <p>Car insurance is an agreement where you pay a premium, and the insurance company helps cover costs if your car is damaged, stolen, or you're in an accident.</p>
+        </li>
+
+        <li>
+          <span className="font-bold">Why Do I Need Car Insurance?</span>
+          <p>It’s legally required in most states. Without it, you could face fines, penalties, or lose your license.</p>
+        </li>
+
+        <li>
+          <span className="font-bold">What Does Car Insurance Cover?</span>
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Liability Insurance: Covers damage/injury to others if you're at fault.</li>
+            <li>Collision Coverage: Helps repair your car after an accident, no matter who's at fault.</li>
+            <li>Comprehensive Coverage: Covers theft, fire, or storm damage.</li>
+            <li>Personal Injury Protection (PIP): Helps with medical expenses after an accident.</li>
+            <li>Uninsured/Underinsured Motorist: Protects you if the other driver doesn’t have insurance.</li>
+          </ul>
+        </li>
+
+        <li>
+          <span className="font-bold">How Does Car Insurance Work?</span>
+          <p>You pay a regular premium to keep your insurance, and when you file a claim, you pay a deductible before the insurance covers the rest.</p>
+        </li>
+
+        <li>
+          <span className="font-bold">How Much Does Car Insurance Cost?</span>
+          <p>It depends on:</p>
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Your age and driving history.</li>
+            <li>The car you drive.</li>
+            <li>Your coverage choices.</li>
+            <li>Where you live.</li>
+          </ul>
+        </li>
+
+        <li>
+          <span className="font-bold">How Do I Choose the Right Coverage?</span>
+          <p>First, meet your state’s minimum requirements, and then consider factors like your car’s value, budget, and driving habits.</p>
+        </li>
+
+        <li>
+          <span className="font-bold">How Do I Buy Car Insurance?</span>
+          <p>Through insurance agents or online directly from insurance companies.</p>
+        </li>
+
+        <li>
+          <span className="font-bold">What Should I Do After I Buy Insurance?</span>
+          <p>Carry your proof of insurance in your car and review your policy to understand what’s covered.</p>
+        </li>
+
+        <li>
+          <span className="font-bold">What Happens if I Get in an Accident?</span>
+          <p>You pay a deductible and your premium increases.</p>
+        </li>
+      </ol>
         </div>
     </div>
     )
