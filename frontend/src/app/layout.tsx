@@ -5,7 +5,8 @@ import "./globals.css";
 
 import Navbar from "./components/Navbar/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
-
+import Chatbot from "./components/Chatbot/Chatbot";
+ 
 
 const halantFont = Halant({
   weight: "400",
@@ -31,6 +32,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Chatbot />
         </body>
       </html>
     </ClerkProvider>
