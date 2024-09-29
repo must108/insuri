@@ -59,7 +59,7 @@ function Stage1() {
 	}, [claimData, otherParty, otherPartyDesc, injured, injuryDesc, policeReport, insuranceCompany, otherComments, setClaimData, setStage]);
 
 	return (
-		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border border-accent-content shadow-lg rounded-lg'>
 			<div className='flex justify-between'>
 				<p className='text-2xl font-bold'>Incident Information</p>
 				<p className='badge'><strong>Step 1/5</strong></p>
@@ -171,7 +171,7 @@ function Stage2() {
 	}, [carMake, carModel, carYear, carMilage, claimData, setClaimData, setStage]);
 
 	return (
-		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border border-accent-content shadow-lg rounded-lg'>
 			<div className='flex justify-between w-full'>
 				<p className='text-2xl font-bold'>Vehicle Information</p>
 				<p className='badge'><strong>Step 2/5</strong></p>
@@ -293,7 +293,7 @@ function Stage3() {
 	}, [fileInputs, claimData, setClaimData, setStage]);
 
 	return (
-		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border border-accent-content shadow-lg rounded-lg'>
 			<div className='flex justify-between w-full'>
 				<p className='text-2xl font-bold'>Scene Analysis</p>
 				<p className='badge'><strong>Step 3/5</strong></p>
@@ -365,7 +365,7 @@ function Stage4() {
 	}, [age, gender, address, deductible, premium, claimData, setClaimData, setStage]);
 
 	return (
-		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border border-accent-content shadow-lg rounded-lg'>
 			<div className='flex justify-between w-full'>
 				<p className='text-2xl font-bold'>Additional Information</p>
 				<p className='badge'><strong>Step 4/5</strong></p>
@@ -541,7 +541,7 @@ function Stage5() {
 	}, [stage, processingState, claimData]);
 
 	return (
-		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border rounded-lg'>
+		<div className='flex max-w-[30rem] w-full flex-col gap-8 p-4 mb-[10%] border border-accent-content shadow-lg rounded-lg'>
 			<div className='flex justify-between w-full'>
 				<p className='text-2xl font-bold'>Processing Claim Data</p>
 				<p className='badge'><strong>Step 5/5</strong></p>
@@ -591,18 +591,18 @@ function Stage5() {
 					<>
 						<p>There was an error processing your claim. Please try again.</p>
 						<div>
-						<button onClick={() => {
-							setProcessingState(0);
-							hasStartedProcessing.current = false;
-						}}>Try again</button>
+							<button onClick={() => {
+								setProcessingState(0);
+								hasStartedProcessing.current = false;
+							}}>Try again</button>
 
-						<button onClick={() => {
-							setStage(1);
-							setProcessingState(0);
-							hasStartedProcessing.current = false;
-						}}>Restart Claim</button>
+							<button onClick={() => {
+								setStage(1);
+								setProcessingState(0);
+								hasStartedProcessing.current = false;
+							}}>Restart Claim</button>
 						</div>
-						
+
 					</>
 				)
 			}
