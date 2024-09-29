@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function TeamCard({ name, role, linkedin, github, image }) {
+export function TeamCard({ name, role, linkedin, github, image }: { name: string, role: string, linkedin: string, github: string, image: string }) {
 	return (
 		<div className='flex flex-col gap-4 w-[16rem] p-4'>
 			<Image src={image} alt={name} width={180} height={180} className="object-cover rounded-full aspect-square" />
