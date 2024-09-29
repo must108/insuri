@@ -140,13 +140,13 @@ export default function BeginnerGuide() {
           <p>Ready to learn more? Check out these resources:</p>
           <ul className="list-disc ml-6 space-y-4 mt-4">
             <li>
-              <a href="https://www.insureuonline.org/" target="_blank" rel="noopener noreferrer">Insure U</a> - Insurance information for consumers from the National Association of Insurance Commissioners.
+              <a href="https://www.insureuonline.org/" target="_blank" rel="noopener noreferrer" className="link link-primary">Insure U</a> - Insurance information for consumers from the National Association of Insurance Commissioners.
             </li>
             <li>
-              <a href="https://www.iii.org/" target="_blank" rel="noopener noreferrer">Insurance Information Institute</a> - Facts and statistics about insurance.
+              <a href="https://www.iii.org/" target="_blank" rel="noopener noreferrer" className="link link-primary">Insurance Information Institute</a> - Facts and statistics about insurance.
             </li>
             <li>
-              <a href="https://www.consumerreports.org/cro/car-insurance.htm" target="_blank" rel="noopener noreferrer">Consumer Reports</a> - Car insurance buying guide.
+              <a href="https://www.consumerreports.org/cro/car-insurance.htm" target="_blank" rel="noopener noreferrer" className="link link-primary">Consumer Reports</a> - Car insurance buying guide.
             </li>
           </ul>
         </div>
