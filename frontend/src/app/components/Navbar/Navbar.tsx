@@ -23,7 +23,7 @@ const CustomPage = () => {
 
 function LinkButton({ link, label }: { link: string, label: string }) {
 	return <Link href={link}>
-		<p className="hover:opacity-60">{label}</p>
+		<p className="hover:opacity-60 text-xs sm:text-sm ">{label}</p>
 	</Link>
 }
 
@@ -36,9 +36,10 @@ export default function Navbar() {
 				</Link>
 
 				<div className="flex flex-row gap-4 items-center">
-					<LinkButton link="/about" label="About" />
+					<LinkButton link="/learn" label="Learn" />
 					<LinkButton link="/terms" label="Terms" />
 					<LinkButton link="/my-claims" label="My Claims" />
+					<LinkButton link="/about" label="About" />
 				</div>
 
 				<div className="">
